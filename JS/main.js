@@ -1,49 +1,44 @@
 import house from '../data/pro-congress-115-house';
 import senate from '../data/pro-congress-115-senate';
 
-const houseMembersArr = house.results[0].members;
-const senateMembersArr = senate.results[0].members;
+// Determin which data to use depending on location
+const determinDataToUse = () => {
+  const houseObj = {
+    members: house.results[0].members,
+    table: document.getElementById("house-table")
+  }
+  const senateObj = {
+    members: senate.results[0].members,
+    table: document.getElementById("senate-table")
+  }
 
-const appendHouseData = data => {
-  const houseTable = document.getElementById("house-table");
-  data.forEach((rep, i) => {
-    let tr = document.createElement("tr");
-    tr.innerHTML =
-      `<td>${i + 1} ${rep.first_name} 
-          ${rep.middle_name === null ? " " : rep.middle_name} 
-          ${rep.last_name}
-      </td>
-      <td>${rep.party}</td>
-      <td>${rep.state}</td>
-      <td>${rep.seniority}</td>
-      <td>${rep.votes_with_party_pct}</td>`;
-    houseTable.appendChild(tr);
-  });
-}
-
-const appendSenateData = data => {
-  const senateTable = document.getElementById("senate-table");
-  data.forEach((sen, i) => {
-    let tr = document.createElement("tr");
-    tr.innerHTML =
-      `<td>${i + 1} ${sen.first_name} 
-          ${sen.middle_name === null ? " " : sen.middle_name} 
-          ${sen.last_name}
-      </td>
-      <td>${sen.party}</td>
-      <td>${sen.state}</td>
-      <td>${sen.seniority}</td>
-      <td>${sen.votes_with_party_pct}</td>`;
-    senateTable.appendChild(tr);
-  });
-}
-
-const location = () => {
-  if(document.location.pathname === "/house-data.html") {
-    return appendHouseData(houseMembersArr);
+  if (document.location.pathname === "/house-data.html") {
+    return houseObj;
   } else if (document.location.pathname === "/senate-data.html") {
-    return appendSenateData(senateMembersArr);
+    return senateObj;
   }
 }
 
-location();
+// Append appropriate data to table
+const appendData = fn => {
+  const { members, table } = fn;
+  members.forEach((mem, i) => {
+    let tr = document.createElement("tr");
+    tr.innerHTML =
+      `<td>${i + 1} 
+          ${mem.first_name} 
+          ${mem.middle_name === null ? " " : mem.middle_name} 
+          ${mem.last_name}
+        </td>
+        <td>${mem.party}</td>
+        <td>${mem.state}</td>
+        <td>${mem.seniority}</td>
+        <td>
+          ${mem.votes_with_party_pct === undefined ? "no data" : mem.votes_with_party_pct}
+        </td>`;
+    table.appendChild(tr);
+  });
+}
+
+determinDataToUse();
+appendData(determinDataToUse());
