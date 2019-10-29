@@ -13,16 +13,74 @@
 </head>
 
 <body>
+  <div class="container">
 
-  <table id="senate-table" class="table">
-    <tr>
-      <th>Full Name</th>
-      <th>Party</th>
-      <th>State</th>
-      <th>Senority</th>
-      <th>Percentage of votes</th>
-    </tr>
-  </table>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Congress 115
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="./house-data.html">House</a>
+              <a class="dropdown-item" href="#">Senate</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Attendance
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">House</a>
+              <a class="dropdown-item" href="#">Senate</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Party Loyalty
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">House</a>
+              <a class="dropdown-item" href="#">Senate</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="table-responsive">
+      <table id="senate-table" class="table table-striped">
+        <caption>List of Senators</caption>
+        <thead class="thead-dark">
+          <tr>
+            <th>Full Name</th>
+            <th>Party</th>
+            <th>State</th>
+            <th>Senority</th>
+            <th>Percentage of votes</th>
+          </tr>
+        </thead>
+        <tbody class="senate-table_tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="container text-center">
+      <h4>Footer</h4>
+    </div>
+  </div>
+
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
