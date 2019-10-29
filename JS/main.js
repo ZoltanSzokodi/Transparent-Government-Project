@@ -1,36 +1,49 @@
-import axios from 'axios';
-import APIkey from '../data/APIkey';
+import house from '../data/pro-congress-115-house';
 import senate from '../data/pro-congress-115-senate';
 
-// const url = "https://api.propublica.org/congress/v1/115/senate/members.json";
-// const config = {
-//   "X-API-Key": APIkey
-// }
-// const data = axios.get(url, { headers: config }).then(response => {
-//   console.log(response);
-// });
-
+const houseMembersArr = house.results[0].members;
 const senateMembersArr = senate.results[0].members;
-const senateTable = document.getElementById("senate-table");
 
-console.log(senateMembersArr);
-
-
-const appendSenateData = data => {
-  data.forEach((senator, i) => {
+const appendHouseData = data => {
+  const houseTable = document.getElementById("house-table");
+  data.forEach((rep, i) => {
     let tr = document.createElement("tr");
     tr.innerHTML =
-      `<td>${i + 1} ${senator.first_name} 
-          ${senator.middle_name === null ? " " : senator.middle_name} 
-          ${senator.last_name}
+      `<td>${i + 1} ${rep.first_name} 
+          ${rep.middle_name === null ? " " : rep.middle_name} 
+          ${rep.last_name}
       </td>
-      <td>${senator.party}</td>
-      <td>${senator.state}</td>
-      <td>${senator.seniority}</td>
-      <td>${senator.votes_with_party_pct}</td>`;
+      <td>${rep.party}</td>
+      <td>${rep.state}</td>
+      <td>${rep.seniority}</td>
+      <td>${rep.votes_with_party_pct}</td>`;
+    houseTable.appendChild(tr);
+  });
+}
+
+const appendSenateData = data => {
+  const senateTable = document.getElementById("senate-table");
+  data.forEach((sen, i) => {
+    let tr = document.createElement("tr");
+    tr.innerHTML =
+      `<td>${i + 1} ${sen.first_name} 
+          ${sen.middle_name === null ? " " : sen.middle_name} 
+          ${sen.last_name}
+      </td>
+      <td>${sen.party}</td>
+      <td>${sen.state}</td>
+      <td>${sen.seniority}</td>
+      <td>${sen.votes_with_party_pct}</td>`;
     senateTable.appendChild(tr);
   });
 }
 
-appendSenateData(senateMembersArr);
+const location = () => {
+  if(document.location.pathname === "/house-data.html") {
+    return appendHouseData(houseMembersArr);
+  } else if (document.location.pathname === "/senate-data.html") {
+    return appendSenateData(senateMembersArr);
+  }
+}
 
+location();
