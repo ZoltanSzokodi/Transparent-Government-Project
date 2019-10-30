@@ -8,15 +8,17 @@ const appendData = fn => {
 
     tr.innerHTML =
       `<td>${i + 1}. 
-          ${mem.first_name} 
-          ${mem.middle_name === null ? " " : mem.middle_name} 
-          ${mem.last_name}
+          <a href="${mem.url}" target="_blank">
+            ${mem.first_name} 
+            ${mem.middle_name === null ? " " : mem.middle_name} 
+            ${mem.last_name}
+          <a/>
         </td>
         <td>${mem.party}</td>
         <td>${mem.state}</td>
         <td>${mem.seniority}</td>
         <td>
-          ${mem.votes_with_party_pct === undefined ? "no data" : mem.votes_with_party_pct}
+          ${mem.votes_with_party_pct === undefined ? "no data" : mem.votes_with_party_pct} %
         </td>`;
     table.appendChild(tr);
   });

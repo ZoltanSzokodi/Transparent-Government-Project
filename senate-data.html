@@ -15,6 +15,13 @@
 <body>
   <div class="container">
 
+    <div class="jumbotron jumbotron-fluid m-0">
+      <div class="container">
+        <h1 class="display-4">Senate</h1>
+        <p class="lead">Transparent Government in Facts</p>
+      </div>
+    </div>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -60,38 +67,87 @@
       </div>
     </nav>
 
-    <div class="table-responsive">
-      <table id="senate-table" class="table table-striped">
-        <caption>List of Senators</caption>
-        <thead class="thead-dark">
-          <tr>
-            <th>Full Name</th>
-            <th>Party</th>
-            <th>State</th>
-            <th>Senority</th>
-            <th>Percentage of votes</th>
-          </tr>
-        </thead>
-        <tbody class="senate-table_tbody"></tbody>
-      </table>
+    <div class="card mt-3" style="max-width: 100%;">
+      <div class="row no-gutters">
+        <!-- <div class="about-img col-md-4">
+            <img src="./img/TGIFlogo.png" class="card-img" alt="logo">
+          </div> -->
+        <div class="col-md-12">
+          <div class="card-body">
+            <h5 class="card-title">Senate</h5>
+            <p class="card-text">The United States Senate is the upper chamber of the United States Congress which,
+              along with the United States House of Representatives—the lower chamber—comprises the legislature of the
+              United States. The Senate chamber is located in the north wing of the Capitol Building, in Washington,
+              D.C.
+              <br><br>
+              The composition and powers of the Senate are established by Article One of the United States
+              Constitution. The Senate is composed of senators, each of whom represents a single state in its
+              entirety. Each state, regardless of its population size, is equally represented by two senators who serve
+              staggered terms of six years. There being at present 50 states in the Union, there are currently 100
+              senators. From 1789 to 1913, senators were appointed by legislatures of the states they represented; they
+              are now elected by popular vote, following the ratification of the Seventeenth Amendment in 1913.</p>
+            <p class="card-text"><a class="btn btn-outline-dark" data-toggle="collapse" href="#multiCollapseExample1"
+                role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Read more</a></p>
+            <div class="row">
+              <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                  <div class="about-dropdown card card-body">
+                    As the upper chamber of Congress, the Senate has several powers of advice and consent which are
+                    unique to it. These include the approval of treaties, and the confirmation of Cabinet secretaries,
+                    Supreme Court justices, federal judges, flag officers, regulatory officials, ambassadors, other
+                    federal executive officials and other federal uniformed officers. In addition to these, in cases
+                    wherein no candidate receives a majority of electors for vice president, the duty falls to the
+                    Senate to elect one of the top two recipients of electors for that office. Furthermore, the Senate
+                    has the responsibility of conducting the trials of those impeached by the House.
+                    <br><br>
+                    The Senate is widely considered both a more deliberative and more prestigious body than
+                    the House of Representatives due to its longer terms, smaller size, and statewide constituencies,
+                    which historically led to a more collegial and less partisan atmosphere. The presiding officer of
+                    the Senate is the vice president of the United States, who is president of the Senate. In the vice
+                    president's absence, the president pro tempore, who is customarily the senior member of the party
+                    holding a majority of seats, presides over the Senate. In the early 20th century, the practice of
+                    majority and minority parties electing their floor leaders began, although they are not
+                    constitutional officers.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table id="senate-table" class="table table-striped">
+          <caption>List of Senators</caption>
+          <thead class="thead-dark">
+            <tr>
+              <th>Full Name</th>
+              <th>Party Affiliation</th>
+              <th>State</th>
+              <th>Years in Office</th>
+              <th>Percentage of votes</th>
+            </tr>
+          </thead>
+          <tbody class="senate-table_tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="container text-center">
+        <h4>Footer</h4>
+      </div>
     </div>
 
-    <div class="container text-center">
-      <h4>Footer</h4>
-    </div>
-  </div>
 
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="./dist/main.bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <script src="./dist/main.bundle.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 .jumbotron {
-  background-image: url(../img/TGIFlogo.png);
-  background-size: 60%;
+  background-image: url(../img/lotus-with-hands-1889661_1280.png);
+  background-size: 40%;
   background-repeat: no-repeat;
   background-position: right;
   background-color: white;
@@ -12,9 +12,12 @@
 }
 .about {
   &-img {
-    background-image: url(../img/americanFlag.jpg);
-    background-size: cover;
     opacity: 0.7;
+    text-align: center;
+    & img {
+      height: 400px;
+      width: auto;
+    }
   }
   &-dropdown {
     border: none;
