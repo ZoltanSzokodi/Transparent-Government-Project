@@ -22,3 +22,40 @@ export const toggleData = () => {
     return chambers.senate;
   }
 }
+
+// Calculate statistics
+export const numberOfMembersPerParty = () => {
+  const statistics = {
+    houseStats: {
+      "Republicans": [],
+      "Democrats": [],
+      "Independent": []
+    },
+    senateStats: {
+      "Republicans": [],
+      "Democrats": [],
+      "Independent": []
+    }
+  };
+
+  // Loop through data according to data passsed in
+  const loopData = (chamber, statsObj) => {
+    chamber.results[0].members.forEach(mem => {
+      if (mem.party === "R") {
+        statsObj.Republicans.push(`${mem.first_name} ${mem.last_name}`);
+      } else if (mem.party === "D") {
+        statsObj.Democrats.push(`${mem.first_name} ${mem.last_name}`);
+      } else {
+        statsObj.Independent.push(`${mem.first_name} ${mem.last_name}`);
+      }
+    })
+
+    return statsObj;
+  };
+
+  if (document.location.pathname === "/house-attendance.html") {
+    return loopData(house, statistics.houseStats);
+  } else if (document.location.pathname === "/senate-attendance.html") {
+    return loopData(senate, statistics.senateStats);
+  }
+}

@@ -1,6 +1,22 @@
-import { toggleData } from './dataHandlers';
-// Append appropriate data to table
-const appendData = fn => {
+import { toggleData, numberOfMembersPerParty } from './dataHandlers';
+
+const senateDataPage = document.location.pathname === "/senate-data.html";
+const houseDataPage = document.location.pathname === "/house-data.html";
+const senateAttendancePage = document.location.pathname === "/house-attendance.html";
+const houseAttendancePage = document.location.pathname === "/senate-attendance.html";
+
+// Decide which render function to use according to file path
+const toggleFunctions = () => {
+  if (houseDataPage || senateDataPage) {
+    return renderMembersTable(toggleData());
+  } else if (houseAttendancePage || senateAttendancePage) {
+    console.log(numberOfMembersPerParty());
+    renderAttendanceTable(numberOfMembersPerParty());
+  }
+}
+
+// Append appropriate data to members table
+const renderMembersTable = fn => {
   const { members, table } = fn;
 
   members.forEach((mem, i) => {
@@ -22,6 +38,20 @@ const appendData = fn => {
         </td>`;
     table.appendChild(tr);
   });
+};
+
+// Append appropriate data to attendance table
+const renderAttendanceTable = fn => {
+  const table = document.querySelector(".attendance-table_tbody");
+
+  for (let key in fn) {
+    let tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${key}</td>
+      <td>${fn[key].length}
+    </td>`;
+    table.appendChild(tr);
+  }
 }
 
-appendData(toggleData());
+toggleFunctions();
