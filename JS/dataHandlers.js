@@ -6,12 +6,10 @@ export const toggleData = () => {
   const chambers = {
     house: {
       members: house.results[0].members,
-      table: document.querySelector(".house-table_tbody"),
       url: house.results[0].url
     },
     senate: {
       members: senate.results[0].members,
-      table: document.querySelector(".senate-table_tbody"),
       url: senate.results[0].url
     }
   }
@@ -21,7 +19,7 @@ export const toggleData = () => {
   } else if (document.location.pathname === "/senate-data.html") {
     return chambers.senate;
   }
-}
+};
 
 // Calculate statistics
 export const numberOfMembersPerParty = () => {
@@ -29,33 +27,53 @@ export const numberOfMembersPerParty = () => {
     houseStats: {
       "Republicans": [],
       "Democrats": [],
-      "Independent": []
+      "Independent": [],
+      "Total": 0
     },
     senateStats: {
       "Republicans": [],
       "Democrats": [],
-      "Independent": []
+      "Independent": [],
+      "Total": 0
     }
   };
 
   // Loop through data according to data passsed in
   const loopData = (chamber, statsObj) => {
     chamber.results[0].members.forEach(mem => {
+      statsObj.Total++;
       if (mem.party === "R") {
-        statsObj.Republicans.push(`${mem.first_name} ${mem.last_name}`);
+        statsObj.Republicans.push(`${mem}`);
       } else if (mem.party === "D") {
-        statsObj.Democrats.push(`${mem.first_name} ${mem.last_name}`);
+        statsObj.Democrats.push(`${mem}`);
       } else {
-        statsObj.Independent.push(`${mem.first_name} ${mem.last_name}`);
+        statsObj.Independent.push(`${mem}`);
       }
     })
 
     return statsObj;
   };
 
+  // const calcAverageVotes = (chamber) => {
+  //   const averages = {
+  //     "RepAvg": 0,
+  //     "DemAvg": 0,
+  //     "IndAvg": 0
+  //   }
+  //   chamber.forEach(mem => {
+  //     if (mem.party === "R") {
+  //       averages.RepAvg += mem.votes_with_party_pct;
+  //     } else if (mem.party === "D") {
+  //       averages.DemAvg += mem.votes_with_party_pct;
+  //     } else if (mem.party === "I") {
+  //       averages.IndAvg += mem.votes_with_party_pct;
+  //     }
+  //   })
+  // }
+
   if (document.location.pathname === "/house-attendance.html") {
     return loopData(house, statistics.houseStats);
   } else if (document.location.pathname === "/senate-attendance.html") {
     return loopData(senate, statistics.senateStats);
   }
-}
+};

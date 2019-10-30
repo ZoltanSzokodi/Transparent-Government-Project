@@ -8,7 +8,7 @@ const houseAttendancePage = document.location.pathname === "/senate-attendance.h
 // Decide which render function to use according to file path
 const toggleFunctions = () => {
   if (houseDataPage || senateDataPage) {
-    return renderMembersTable(toggleData());
+    renderMembersTable(toggleData());
   } else if (houseAttendancePage || senateAttendancePage) {
     console.log(numberOfMembersPerParty());
     renderAttendanceTable(numberOfMembersPerParty());
@@ -17,7 +17,8 @@ const toggleFunctions = () => {
 
 // Append appropriate data to members table
 const renderMembersTable = fn => {
-  const { members, table } = fn;
+  const { members } = fn;
+  const table = document.querySelector(".members-table_tbody");
 
   members.forEach((mem, i) => {
     let tr = document.createElement("tr");
@@ -48,8 +49,7 @@ const renderAttendanceTable = fn => {
     let tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${key}</td>
-      <td>${fn[key].length}
-    </td>`;
+      <td>${typeof fn[key] === "object" ? fn[key].length : fn[key]}</td>`;
     table.appendChild(tr);
   }
 }
