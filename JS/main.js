@@ -1,24 +1,4 @@
-import house from '../data/pro-congress-115-house';
-import senate from '../data/pro-congress-115-senate';
-
-// Determin which data to use depending on location
-const toggleData = () => {
-  const houseObj = {
-    members: house.results[0].members,
-    table: document.querySelector(".house-table_tbody")
-  }
-  const senateObj = {
-    members: senate.results[0].members,
-    table: document.querySelector(".senate-table_tbody")
-  }
-
-  if (document.location.pathname === "/house-data.html") {
-    return houseObj;
-  } else if (document.location.pathname === "/senate-data.html") {
-    return senateObj;
-  }
-}
-
+import { toggleData } from './dataHandlers';
 // Append appropriate data to table
 const appendData = fn => {
   const { members, table } = fn;
@@ -42,5 +22,4 @@ const appendData = fn => {
   });
 }
 
-toggleData();
 appendData(toggleData());
