@@ -1,5 +1,5 @@
-// import { toggleData, calcStats } from './dataHandlers';
-import { toggleData, statistics } from './dataHandlers';
+import { toggleData } from './dataHandlers';
+import statistics from './statistics';
 
 const senateDataPage = document.location.pathname === "/senate-data.html";
 const houseDataPage = document.location.pathname === "/house-data.html";
@@ -52,7 +52,7 @@ const renderAttendanceTable = stats => {
     let tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${key}</td>
-      <td>${key === "Total" ? stats[key].sumOfMembers : stats[key].numOfMembers}</td>
+      <td>${key === "Total" ? stats[key].sumOfMembersPerChamber : stats[key].numOfMembersPerParty}</td>
       <td>${key === "Total" ? stats[key].avrgOfVotesWithParty : stats[key].votesWithParty} %</td>`;
     table.appendChild(tr);
   }
