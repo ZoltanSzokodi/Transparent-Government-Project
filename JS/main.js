@@ -1,17 +1,20 @@
-import { toggleData, numberOfMembersPerParty } from './dataHandlers';
+// import { toggleData, calcStats } from './dataHandlers';
+import { toggleData, statistics } from './dataHandlers';
 
 const senateDataPage = document.location.pathname === "/senate-data.html";
 const houseDataPage = document.location.pathname === "/house-data.html";
-const senateAttendancePage = document.location.pathname === "/house-attendance.html";
-const houseAttendancePage = document.location.pathname === "/senate-attendance.html";
+const senateAttendancePage = document.location.pathname === "/senate-attendance.html";
+const houseAttendancePage = document.location.pathname === "/house-attendance.html";
 
 // Decide which render function to use according to file path
 const toggleFunctions = () => {
   if (houseDataPage || senateDataPage) {
     renderMembersTable(toggleData());
-  } else if (houseAttendancePage || senateAttendancePage) {
-    console.log(numberOfMembersPerParty());
-    renderAttendanceTable(numberOfMembersPerParty());
+  } else if (houseAttendancePage) {
+    renderAttendanceTable(statistics.houseStats);
+    console.log(statistics);
+  } else if (senateAttendancePage) {
+    renderAttendanceTable(statistics.senateStats);
   }
 }
 
@@ -42,14 +45,15 @@ const renderMembersTable = fn => {
 };
 
 // Append appropriate data to attendance table
-const renderAttendanceTable = fn => {
+const renderAttendanceTable = stats => {
   const table = document.querySelector(".attendance-table_tbody");
 
-  for (let key in fn) {
+  for (let key in stats) {
     let tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${key}</td>
-      <td>${typeof fn[key] === "object" ? fn[key].length : fn[key]}</td>`;
+      <td>${key === "Total" ? stats[key].sumOfMembers : stats[key].numOfMembers}</td>
+      <td>${key === "Total" ? stats[key].avrgOfVotesWithParty : stats[key].votesWithParty} %</td>`;
     table.appendChild(tr);
   }
 }
