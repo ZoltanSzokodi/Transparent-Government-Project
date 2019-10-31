@@ -12,7 +12,6 @@ const getNumberOfMembersPerParty = (chamber, party) => {
   return membersArr.length;
 };
 
-
 const getVotesWithParty = (chamber, party) => {
   let count = 0;
   let votesSum = 0;
@@ -28,13 +27,7 @@ const getVotesWithParty = (chamber, party) => {
   return votesAvrg.toFixed(2) * 1;
 };
 
-const getArrOfMembersPerChamber = chamber => {
-  let membersArr = [];
-  chamber.results[0].members.forEach(mem => membersArr.push(mem));
-  return membersArr;
-}
-
-const getAvrgOfVotesWithParty = chamber => {
+const getAvrgVotesWithParty = chamber => {
   let count = 0;
   let votesSum = 0;
   chamber.results[0].members.forEach(mem => {
@@ -45,6 +38,12 @@ const getAvrgOfVotesWithParty = chamber => {
   })
   let votesAvrg = votesSum / count;
   return votesAvrg.toFixed(2) * 1;
+}
+
+const getArrOfMembersPerChamber = chamber => {
+  let membersArr = [];
+  chamber.results[0].members.forEach(mem => membersArr.push(mem));
+  return membersArr;
 }
 
 const getArrOfMemberEnagagement = (chamber, boolean) => {
@@ -79,7 +78,7 @@ const statistics = {
     },
     "Total": {
       "arrOfMembersPerChamber": getArrOfMembersPerChamber(house),
-      "avrgOfVotesWithParty": getAvrgOfVotesWithParty(house),
+      "avrgOfVotesWithParty": getAvrgVotesWithParty(house),
       "arrOfLeastEngagedMembers": getArrOfMemberEnagagement(house, false),
       "arrOfMostEngagedMembers": getArrOfMemberEnagagement(house, true)
     }
@@ -99,7 +98,7 @@ const statistics = {
     },
     "Total": {
       "arrOfMembersPerChamber": getArrOfMembersPerChamber(senate),
-      "avrgOfVotesWithParty": getAvrgOfVotesWithParty(senate),
+      "avrgOfVotesWithParty": getAvrgVotesWithParty(senate),
       "arrOfLeastEngagedMembers": getArrOfMemberEnagagement(senate, false),
       "arrOfMostEngagedMembers": getArrOfMemberEnagagement(senate, true),
     }

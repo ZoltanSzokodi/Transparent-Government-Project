@@ -9,15 +9,26 @@ const houseAttendancePage = document.location.pathname === "/house-attendance.ht
 // Decide which render function to use according to file path
 const toggleFunctions = () => {
   if (houseDataPage) {
-    renderMembersTable(statistics.houseStats.Total.sumOfMembersPerChamber)
+    renderMembersTable(statistics.houseStats.Total.arrOfMembersPerChamber)
   } else if (senateDataPage) {
-    renderMembersTable(statistics.senateStats.Total.sumOfMembersPerChamber)
+    renderMembersTable(statistics.senateStats.Total.arrOfMembersPerChamber)
   } else if (houseAttendancePage) {
     renderAttendanceTable(statistics.houseStats);
-    statistics.houseStats.Total.arrOfLeastEngagedMembers.forEach((e, i) => console.log(i, e.first_name, e.missed_votes_pct));
+
+    // TESTING
+    statistics.houseStats.Total.arrOfMostEngagedMembers.forEach((e, i) => console.log(i,
+      e.first_name,
+      e.missed_votes_pct,
+      e.missed_votes));
+
   } else if (senateAttendancePage) {
     renderAttendanceTable(statistics.senateStats);
-    statistics.senateStats.Total.arrOfLeastEngagedMembers.forEach((e, i) => console.log(i, e.first_name, e.missed_votes_pct));
+
+    // TESTING
+    statistics.senateStats.Total.arrOfMostEngagedMembers.forEach((e, i) => console.log(i,
+      e.first_name,
+      e.missed_votes_pct,
+      e.missed_votes));
   }
 }
 
