@@ -1,4 +1,4 @@
-import { toggleData } from './dataHandlers';
+// import { toggleData } from './dataHandlers';
 import statistics from './statistics';
 
 const senateDataPage = document.location.pathname === "/senate-data.html";
@@ -8,8 +8,10 @@ const houseAttendancePage = document.location.pathname === "/house-attendance.ht
 
 // Decide which render function to use according to file path
 const toggleFunctions = () => {
-  if (houseDataPage || senateDataPage) {
-    renderMembersTable(toggleData());
+  if (houseDataPage) {
+    renderMembersTable(statistics.houseStats.Total.sumOfMembersPerChamber)
+  } else if (senateDataPage) {
+    renderMembersTable(statistics.senateStats.Total.sumOfMembersPerChamber)
   } else if (houseAttendancePage) {
     renderAttendanceTable(statistics.houseStats);
     console.log(statistics);
@@ -20,10 +22,9 @@ const toggleFunctions = () => {
 
 // Append appropriate data to members table
 const renderMembersTable = fn => {
-  const { members } = fn;
   const table = document.querySelector(".members-table_tbody");
 
-  members.forEach((mem, i) => {
+  fn.forEach((mem, i) => {
     let tr = document.createElement("tr");
 
     tr.innerHTML =
@@ -52,7 +53,7 @@ const renderAttendanceTable = stats => {
     let tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${key}</td>
-      <td>${key === "Total" ? stats[key].sumOfMembersPerChamber : stats[key].numOfMembersPerParty}</td>
+      <td>${key === "Total" ? stats[key].sumOfMembersPerChamber.length : stats[key].numOfMembersPerParty}</td>
       <td>${key === "Total" ? stats[key].avrgOfVotesWithParty : stats[key].votesWithParty} %</td>`;
     table.appendChild(tr);
   }

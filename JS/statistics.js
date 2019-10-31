@@ -29,9 +29,9 @@ const getVotesWithParty = (chamber, party) => {
 };
 
 const getSumOfMembersPerChamber = chamber => {
-  let count = 0;
-  chamber.results[0].members.forEach(() => count++);
-  return count;
+  let membersArr = [];
+  chamber.results[0].members.forEach(mem => membersArr.push(mem));
+  return membersArr;
 }
 
 const getAvrgOfVotesWithParty = chamber => {
