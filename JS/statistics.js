@@ -1,5 +1,5 @@
-import house from '../data/pro-congress-115-house';
-import senate from '../data/pro-congress-115-senate';
+import house from '../data/pro-congress-115-house.js';
+import senate from '../data/pro-congress-115-senate.js';
 
 // STATISTICS ------------------------------------------------------------
 const getNumberOfMembersPerParty = (chamber, party) => {
@@ -28,7 +28,7 @@ const getVotesWithParty = (chamber, party) => {
   return votesAvrg.toFixed(2) * 1;
 };
 
-const getSumOfMembersPerChamber = chamber => {
+const getArrOfMembersPerChamber = chamber => {
   let membersArr = [];
   chamber.results[0].members.forEach(mem => membersArr.push(mem));
   return membersArr;
@@ -47,6 +47,22 @@ const getAvrgOfVotesWithParty = chamber => {
   return votesAvrg.toFixed(2) * 1;
 }
 
+const getArrOfMemberEnagagement = (chamber, boolean) => {
+  let membersArr = [];
+  chamber.results[0].members.forEach(mem => {
+    if (mem.missed_votes_pct != undefined) {
+      membersArr.push(mem);
+    }
+  });
+  let sortByEngagement;
+  if (boolean) {
+    sortByEngagement = membersArr.sort((a, b) => a.missed_votes_pct - b.missed_votes_pct)
+  } else {
+    sortByEngagement = membersArr.sort((a, b) => b.missed_votes_pct - a.missed_votes_pct)
+  }
+  return sortByEngagement.slice(0, sortByEngagement.length * 0.1);
+}
+
 const statistics = {
   houseStats: {
     "Republicans": {
@@ -62,8 +78,10 @@ const statistics = {
       "votesWithParty": getVotesWithParty(house, "I")
     },
     "Total": {
-      "sumOfMembersPerChamber": getSumOfMembersPerChamber(house),
-      "avrgOfVotesWithParty": getAvrgOfVotesWithParty(house)
+      "arrOfMembersPerChamber": getArrOfMembersPerChamber(house),
+      "avrgOfVotesWithParty": getAvrgOfVotesWithParty(house),
+      "arrOfLeastEngagedMembers": getArrOfMemberEnagagement(house, false),
+      "arrOfMostEngagedMembers": getArrOfMemberEnagagement(house, true)
     }
   },
   senateStats: {
@@ -80,8 +98,10 @@ const statistics = {
       "votesWithParty": getVotesWithParty(senate, "I")
     },
     "Total": {
-      "sumOfMembersPerChamber": getSumOfMembersPerChamber(senate),
-      "avrgOfVotesWithParty": getAvrgOfVotesWithParty(senate)
+      "arrOfMembersPerChamber": getArrOfMembersPerChamber(senate),
+      "avrgOfVotesWithParty": getAvrgOfVotesWithParty(senate),
+      "arrOfLeastEngagedMembers": getArrOfMemberEnagagement(senate, false),
+      "arrOfMostEngagedMembers": getArrOfMemberEnagagement(senate, true),
     }
   }
 };

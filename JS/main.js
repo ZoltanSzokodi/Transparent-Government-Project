@@ -1,5 +1,5 @@
-// import { toggleData } from './dataHandlers';
-import statistics from './statistics';
+
+import statistics from './statistics.js';
 
 const senateDataPage = document.location.pathname === "/senate-data.html";
 const houseDataPage = document.location.pathname === "/house-data.html";
@@ -14,9 +14,10 @@ const toggleFunctions = () => {
     renderMembersTable(statistics.senateStats.Total.sumOfMembersPerChamber)
   } else if (houseAttendancePage) {
     renderAttendanceTable(statistics.houseStats);
-    console.log(statistics);
+    statistics.houseStats.Total.arrOfLeastEngagedMembers.forEach((e, i) => console.log(i, e.first_name, e.missed_votes_pct));
   } else if (senateAttendancePage) {
     renderAttendanceTable(statistics.senateStats);
+    statistics.senateStats.Total.arrOfLeastEngagedMembers.forEach((e, i) => console.log(i, e.first_name, e.missed_votes_pct));
   }
 }
 
@@ -53,7 +54,7 @@ const renderAttendanceTable = stats => {
     let tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${key}</td>
-      <td>${key === "Total" ? stats[key].sumOfMembersPerChamber.length : stats[key].numOfMembersPerParty}</td>
+      <td>${key === "Total" ? stats[key].arrOfMembersPerChamber.length : stats[key].numOfMembersPerParty}</td>
       <td>${key === "Total" ? stats[key].avrgOfVotesWithParty : stats[key].votesWithParty} %</td>`;
     table.appendChild(tr);
   }
