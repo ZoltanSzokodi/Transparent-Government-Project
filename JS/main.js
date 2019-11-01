@@ -1,4 +1,3 @@
-
 import statistics from './statistics.js';
 
 const senateDataPage = document.location.pathname === "/senate-data.html";
@@ -14,23 +13,16 @@ const toggleFunctions = () => {
     renderMembersTable(statistics.senateStats.Total.arrOfMembersPerChamber)
   } else if (houseAttendancePage) {
     renderAttendanceTable(statistics.houseStats);
+    renderEngagementTable(statistics.houseStats.Total.arrOfLeastEngagedMembers, "least");
+    renderEngagementTable(statistics.houseStats.Total.arrOfMostEngagedMembers, "most");
 
-    // TESTING
-    // statistics.houseStats.Total.arrOfMostEngagedMembers.forEach((e, i) => console.log(i,
-    //   e.first_name,
-    //   e.missed_votes_pct,
-    //   e.missed_votes));
     console.log(statistics.houseStats.Total.arrOfMostEngagedMembers);
-
-
   } else if (senateAttendancePage) {
     renderAttendanceTable(statistics.senateStats);
+    renderEngagementTable(statistics.senateStats.Total.arrOfLeastEngagedMembers, "least");
+    renderEngagementTable(statistics.senateStats.Total.arrOfMostEngagedMembers, "most");
 
-    // TESTING
-    statistics.senateStats.Total.arrOfMostEngagedMembers.forEach((e, i) => console.log(i,
-      e.first_name,
-      e.missed_votes_pct,
-      e.missed_votes));
+    console.log(statistics.senateStats.Total.arrOfMostEngagedMembers);
   }
 }
 
@@ -71,6 +63,26 @@ const renderAttendanceTable = stats => {
       <td>${key === "Total" ? stats[key].avrgVotesWithParty : stats[key].votesWithParty} %</td>`;
     table.appendChild(tr);
   }
+}
+
+const renderEngagementTable = (stats, type) => {
+  const table = type === "least" ? document.querySelector('.least-engaged-table_tbody') : document.querySelector(".most-engaged-table_tbody");
+
+  stats.forEach((mem, i) => {
+    let tr = document.createElement("tr");
+
+    tr.innerHTML =
+      `<td>${i + 1}. 
+          <a href="${mem.url}" target="_blank">
+            ${mem.first_name} 
+            ${mem.middle_name === null ? " " : mem.middle_name} 
+            ${mem.last_name}
+          <a/>
+        </td>
+        <td>${mem.missed_votes}</td>
+        <td>${mem.missed_votes_pct} %</td>`;
+    table.appendChild(tr);
+  });
 }
 
 toggleFunctions();
