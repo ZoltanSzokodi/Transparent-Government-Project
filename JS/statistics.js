@@ -2,7 +2,7 @@ import house from '../data/pro-congress-115-house.js';
 import senate from '../data/pro-congress-115-senate.js';
 
 // STATISTICS ------------------------------------------------------------
-const getNumberOfMembersPerParty = (chamber, party) => {
+const getNumMemPerP = (chamber, party) => {
   let membersArr = [];
   chamber.results[0].members.forEach(mem => {
     if (mem.party === party) {
@@ -12,11 +12,46 @@ const getNumberOfMembersPerParty = (chamber, party) => {
   return membersArr.length;
 };
 
-const getVotesWithParty = (chamber, party) => {
+// const getVotesWP = (chamber, party) => {
+//   let count = 0;
+//   let votesSum = 0;
+//   chamber.results[0].members.forEach(mem => {
+//     if (mem.party === party) {
+//       if (mem.votes_with_party_pct != NaN && mem.votes_with_party_pct != undefined) {
+//         votesSum += mem.votes_with_party_pct * 1
+//         count++;
+//       }
+//     }
+//   })
+//   let votesAvrg = votesSum === 0 ? 0 : votesSum / count;
+//   return votesAvrg.toFixed(2) * 1;
+// };
+
+// const getAvgVotesWP = chamber => {
+//   let count = 0;
+//   let votesSum = 0;
+//   chamber.results[0].members.forEach(mem => {
+//     if (mem.votes_with_party_pct != NaN && mem.votes_with_party_pct != undefined) {
+//       votesSum += mem.votes_with_party_pct * 1
+//       count++;
+//     }
+//   })
+//   let votesAvrg = votesSum / count;
+//   return votesAvrg.toFixed(2) * 1;
+// }
+
+const getVotesWP = (chamber, party) => {
   let count = 0;
   let votesSum = 0;
   chamber.results[0].members.forEach(mem => {
-    if (mem.party === party) {
+    if (party) {
+      if (mem.party === party) {
+        if (mem.votes_with_party_pct != NaN && mem.votes_with_party_pct != undefined) {
+          votesSum += mem.votes_with_party_pct * 1
+          count++;
+        }
+      }
+    } else if (!party) {
       if (mem.votes_with_party_pct != NaN && mem.votes_with_party_pct != undefined) {
         votesSum += mem.votes_with_party_pct * 1
         count++;
@@ -27,26 +62,15 @@ const getVotesWithParty = (chamber, party) => {
   return votesAvrg.toFixed(2) * 1;
 };
 
-const getAvrgVotesWithParty = chamber => {
-  let count = 0;
-  let votesSum = 0;
-  chamber.results[0].members.forEach(mem => {
-    if (mem.votes_with_party_pct != NaN && mem.votes_with_party_pct != undefined) {
-      votesSum += mem.votes_with_party_pct * 1
-      count++;
-    }
-  })
-  let votesAvrg = votesSum / count;
-  return votesAvrg.toFixed(2) * 1;
-}
 
-const getArrOfMembersPerChamber = chamber => {
+
+const getArrMemPerC = chamber => {
   let membersArr = [];
   chamber.results[0].members.forEach(mem => membersArr.push(mem));
   return membersArr;
 }
 
-const getArrOfMemberEnagagement = (chamber, boolean) => {
+const getArrMemEng = (chamber, boolean) => {
   let membersArr = [];
   chamber.results[0].members.forEach(mem => {
     if (mem.missed_votes_pct != undefined) {
@@ -65,42 +89,42 @@ const getArrOfMemberEnagagement = (chamber, boolean) => {
 const statistics = {
   houseStats: {
     "Republicans": {
-      "numOfMembersPerParty": getNumberOfMembersPerParty(house, "R"),
-      "votesWithParty": getVotesWithParty(house, "R")
+      "numOfMembersPerParty": getNumMemPerP(house, "R"),
+      "votesWithParty": getVotesWP(house, "R")
     },
     "Democrats": {
-      "numOfMembersPerParty": getNumberOfMembersPerParty(house, "D"),
-      "votesWithParty": getVotesWithParty(house, "D")
+      "numOfMembersPerParty": getNumMemPerP(house, "D"),
+      "votesWithParty": getVotesWP(house, "D")
     },
     "Independent": {
-      "numOfMembersPerParty": getNumberOfMembersPerParty(house, "I"),
-      "votesWithParty": getVotesWithParty(house, "I")
+      "numOfMembersPerParty": getNumMemPerP(house, "I"),
+      "votesWithParty": getVotesWP(house, "I")
     },
     "Total": {
-      "arrOfMembersPerChamber": getArrOfMembersPerChamber(house),
-      "avrgOfVotesWithParty": getAvrgVotesWithParty(house),
-      "arrOfLeastEngagedMembers": getArrOfMemberEnagagement(house, false),
-      "arrOfMostEngagedMembers": getArrOfMemberEnagagement(house, true)
+      "arrOfMembersPerChamber": getArrMemPerC(house),
+      "avrgVotesWithParty": getVotesWP(house, false),
+      "arrOfLeastEngagedMembers": getArrMemEng(house, false),
+      "arrOfMostEngagedMembers": getArrMemEng(house, true)
     }
   },
   senateStats: {
     "Republicans": {
-      "numOfMembersPerParty": getNumberOfMembersPerParty(senate, "R"),
-      "votesWithParty": getVotesWithParty(senate, "R")
+      "numOfMembersPerParty": getNumMemPerP(senate, "R"),
+      "votesWithParty": getVotesWP(senate, "R")
     },
     "Democrats": {
-      "numOfMembersPerParty": getNumberOfMembersPerParty(senate, "D"),
-      "votesWithParty": getVotesWithParty(senate, "D")
+      "numOfMembersPerParty": getNumMemPerP(senate, "D"),
+      "votesWithParty": getVotesWP(senate, "D")
     },
     "Independent": {
-      "numOfMembersPerParty": getNumberOfMembersPerParty(senate, "I"),
-      "votesWithParty": getVotesWithParty(senate, "I")
+      "numOfMembersPerParty": getNumMemPerP(senate, "I"),
+      "votesWithParty": getVotesWP(senate, "I")
     },
     "Total": {
-      "arrOfMembersPerChamber": getArrOfMembersPerChamber(senate),
-      "avrgOfVotesWithParty": getAvrgVotesWithParty(senate),
-      "arrOfLeastEngagedMembers": getArrOfMemberEnagagement(senate, false),
-      "arrOfMostEngagedMembers": getArrOfMemberEnagagement(senate, true),
+      "arrOfMembersPerChamber": getArrMemPerC(senate),
+      "avrgVotesWithParty": getVotesWP(senate, false),
+      "arrOfLeastEngagedMembers": getArrMemEng(senate, false),
+      "arrOfMostEngagedMembers": getArrMemEng(senate, true),
     }
   }
 };

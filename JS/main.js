@@ -16,10 +16,12 @@ const toggleFunctions = () => {
     renderAttendanceTable(statistics.houseStats);
 
     // TESTING
-    statistics.houseStats.Total.arrOfMostEngagedMembers.forEach((e, i) => console.log(i,
-      e.first_name,
-      e.missed_votes_pct,
-      e.missed_votes));
+    // statistics.houseStats.Total.arrOfMostEngagedMembers.forEach((e, i) => console.log(i,
+    //   e.first_name,
+    //   e.missed_votes_pct,
+    //   e.missed_votes));
+    console.log(statistics.houseStats.Total.arrOfMostEngagedMembers);
+
 
   } else if (senateAttendancePage) {
     renderAttendanceTable(statistics.senateStats);
@@ -33,10 +35,10 @@ const toggleFunctions = () => {
 }
 
 // Append appropriate data to members table
-const renderMembersTable = fn => {
+const renderMembersTable = stats => {
   const table = document.querySelector(".members-table_tbody");
 
-  fn.forEach((mem, i) => {
+  stats.forEach((mem, i) => {
     let tr = document.createElement("tr");
 
     tr.innerHTML =
@@ -66,7 +68,7 @@ const renderAttendanceTable = stats => {
     tr.innerHTML = `
       <td>${key}</td>
       <td>${key === "Total" ? stats[key].arrOfMembersPerChamber.length : stats[key].numOfMembersPerParty}</td>
-      <td>${key === "Total" ? stats[key].avrgOfVotesWithParty : stats[key].votesWithParty} %</td>`;
+      <td>${key === "Total" ? stats[key].avrgVotesWithParty : stats[key].votesWithParty} %</td>`;
     table.appendChild(tr);
   }
 }
