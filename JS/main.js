@@ -9,14 +9,17 @@ const houseAttendancePage = document.location.pathname === "/house-attendance.ht
 const toggleFunctions = () => {
   if (houseDataPage) {
     renderMembersTable(statistics.houseStats.Total.arrOfMembersPerChamber)
+
   } else if (senateDataPage) {
     renderMembersTable(statistics.senateStats.Total.arrOfMembersPerChamber)
+
   } else if (houseAttendancePage) {
     renderAttendanceTable(statistics.houseStats);
     renderEngagementTable(statistics.houseStats.Total.arrOfLeastEngagedMembers, "least");
     renderEngagementTable(statistics.houseStats.Total.arrOfMostEngagedMembers, "most");
 
     console.log(statistics.houseStats.Total.arrOfMostEngagedMembers);
+
   } else if (senateAttendancePage) {
     renderAttendanceTable(statistics.senateStats);
     renderEngagementTable(statistics.senateStats.Total.arrOfLeastEngagedMembers, "least");
