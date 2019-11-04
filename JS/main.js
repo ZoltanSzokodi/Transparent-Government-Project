@@ -7,34 +7,52 @@ const houseAttendancePage = document.location.pathname === "/house-attendance.ht
 const senateLoyaltyPage = document.location.pathname === '/senate-loyalty.html';
 const houseLoyaltyPage = document.location.pathname === '/house-loyalty.html';
 
-// Decide which render function to use according to file path
+// CONTROLLER -------------------------------------
+
 const toggleFunctions = () => {
   if (houseDataPage) {
     const { arrOfMembersPerChamber } = statistics.houseStats.Total;
-
-    renderMembersTable(arrOfMembersPerChamber);
-
-  } else if (senateDataPage) {
-    const { arrOfMembersPerChamber } = statistics.senateStats.Total;
     const checkboxes = document.querySelectorAll('.checkbox');
+    const t_body = document.querySelector(".members-table_tbody");
     let checkBoxArr = ["R", "D", "I"];
 
-    renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
-
     checkboxes.forEach(c => {
-      c.addEventListener('click', function (e) {
+      c.addEventListener('click', e => {
         if (checkBoxArr.includes(e.target.value)) {
           checkBoxArr.splice(checkBoxArr.indexOf(e.target.value), 1);
-          document.querySelector(".members-table_tbody").innerHTML = "";
+          t_body.innerHTML = "";
           renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
         } else {
           checkBoxArr.push(e.target.value);
-          document.querySelector(".members-table_tbody").innerHTML = "";
+          t_body.innerHTML = "";
           renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
         }
       });
     })
 
+    renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+
+  } else if (senateDataPage) {
+    const { arrOfMembersPerChamber } = statistics.senateStats.Total;
+    const checkboxes = document.querySelectorAll('.checkbox');
+    const t_body = document.querySelector(".members-table_tbody");
+    let checkBoxArr = ["R", "D", "I"];
+
+    checkboxes.forEach(c => {
+      c.addEventListener('click', e => {
+        if (checkBoxArr.includes(e.target.value)) {
+          checkBoxArr.splice(checkBoxArr.indexOf(e.target.value), 1);
+          t_body.innerHTML = "";
+          renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+        } else {
+          checkBoxArr.push(e.target.value);
+          t_body.innerHTML = "";
+          renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+        }
+      });
+    })
+
+    renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
 
   } else if (houseAttendancePage) {
     const { houseStats } = statistics;
@@ -86,47 +104,20 @@ const toggleFunctions = () => {
   }
 }
 
-// Append appropriate data to members table
-// const addCheckBoxEvents = () => {
-//   const checkboxes = document.querySelectorAll('.checkbox');
-//   let checkBoxArr = ["R", "D", "I"];
-
-//   // checkboxes.forEach(c => {
-//   //   if (c.checked) {
-//   //     checkBoxArr.push(c.value)
-//   //   }
-//   // });
-
-//   // console.log(checkBoxArr);
-// checkboxes.forEach(c => {
-//   c.addEventListener('click', function (e) {
-//     if (checkBoxArr.includes(e.target.value)) {
-//       checkBoxArr.splice(checkBoxArr.indexOf(e.target.value), 1)
-//     } else {
-//       checkBoxArr.push(e.target.value)
-//     }
-//     // console.log(checkBoxArr.includes(e.target.value));
-//   });
-// })
-// }
+// VIEW---------------------------------------------------
 
 const renderMembersTable = (stats, checkArr) => {
-  const table = document.querySelector(".members-table_tbody");
-  // const checkboxes = document.querySelectorAll('.checkbox');
-  // let checkBoxArr = [];
-
-  // checkboxes.forEach(c => {
-  //   if (c.checked) {
-  //     checkBoxArr.push(c.value)
-  //   }
-  // });
+  const t_body = document.querySelector(".members-table_tbody");
+  const tableLength = document.querySelector(".table-length");
+  let tableCount = 0;
 
   stats.forEach((mem, i) => {
     if (checkArr.includes(mem.party)) {
       let tr = document.createElement("tr");
+      tableCount++;
 
       tr.innerHTML =
-        `<td>${i + 1}. 
+        `<td> 
             <a href="${mem.url}" target="_blank">
               ${mem.first_name} 
               ${mem.middle_name === null ? " " : mem.middle_name} 
@@ -139,9 +130,11 @@ const renderMembersTable = (stats, checkArr) => {
           <td>
             ${mem.votes_with_party_pct === undefined ? "no data" : mem.votes_with_party_pct} %
           </td>`;
-      table.appendChild(tr);
+      t_body.appendChild(tr);
     }
   });
+  tableLength.textContent = tableCount;
+
 };
 
 // Append appropriate data to attendance table
