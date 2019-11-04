@@ -16,8 +16,25 @@ const toggleFunctions = () => {
 
   } else if (senateDataPage) {
     const { arrOfMembersPerChamber } = statistics.senateStats.Total;
+    const checkboxes = document.querySelectorAll('.checkbox');
+    let checkBoxArr = ["R", "D", "I"];
 
-    renderMembersTable(arrOfMembersPerChamber);
+    renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+
+    checkboxes.forEach(c => {
+      c.addEventListener('click', function (e) {
+        if (checkBoxArr.includes(e.target.value)) {
+          checkBoxArr.splice(checkBoxArr.indexOf(e.target.value), 1);
+          document.querySelector(".members-table_tbody").innerHTML = "";
+          renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+        } else {
+          checkBoxArr.push(e.target.value);
+          document.querySelector(".members-table_tbody").innerHTML = "";
+          renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+        }
+      });
+    })
+
 
   } else if (houseAttendancePage) {
     const { houseStats } = statistics;
@@ -70,27 +87,60 @@ const toggleFunctions = () => {
 }
 
 // Append appropriate data to members table
-const renderMembersTable = stats => {
+// const addCheckBoxEvents = () => {
+//   const checkboxes = document.querySelectorAll('.checkbox');
+//   let checkBoxArr = ["R", "D", "I"];
+
+//   // checkboxes.forEach(c => {
+//   //   if (c.checked) {
+//   //     checkBoxArr.push(c.value)
+//   //   }
+//   // });
+
+//   // console.log(checkBoxArr);
+// checkboxes.forEach(c => {
+//   c.addEventListener('click', function (e) {
+//     if (checkBoxArr.includes(e.target.value)) {
+//       checkBoxArr.splice(checkBoxArr.indexOf(e.target.value), 1)
+//     } else {
+//       checkBoxArr.push(e.target.value)
+//     }
+//     // console.log(checkBoxArr.includes(e.target.value));
+//   });
+// })
+// }
+
+const renderMembersTable = (stats, checkArr) => {
   const table = document.querySelector(".members-table_tbody");
+  // const checkboxes = document.querySelectorAll('.checkbox');
+  // let checkBoxArr = [];
+
+  // checkboxes.forEach(c => {
+  //   if (c.checked) {
+  //     checkBoxArr.push(c.value)
+  //   }
+  // });
 
   stats.forEach((mem, i) => {
-    let tr = document.createElement("tr");
+    if (checkArr.includes(mem.party)) {
+      let tr = document.createElement("tr");
 
-    tr.innerHTML =
-      `<td>${i + 1}. 
-          <a href="${mem.url}" target="_blank">
-            ${mem.first_name} 
-            ${mem.middle_name === null ? " " : mem.middle_name} 
-            ${mem.last_name}
-          <a/>
-        </td>
-        <td>${mem.party}</td>
-        <td>${mem.state}</td>
-        <td>${mem.seniority}</td>
-        <td>
-          ${mem.votes_with_party_pct === undefined ? "no data" : mem.votes_with_party_pct} %
-        </td>`;
-    table.appendChild(tr);
+      tr.innerHTML =
+        `<td>${i + 1}. 
+            <a href="${mem.url}" target="_blank">
+              ${mem.first_name} 
+              ${mem.middle_name === null ? " " : mem.middle_name} 
+              ${mem.last_name}
+            <a/>
+          </td>
+          <td>${mem.party}</td>
+          <td>${mem.state}</td>
+          <td>${mem.seniority}</td>
+          <td>
+            ${mem.votes_with_party_pct === undefined ? "no data" : mem.votes_with_party_pct} %
+          </td>`;
+      table.appendChild(tr);
+    }
   });
 };
 
