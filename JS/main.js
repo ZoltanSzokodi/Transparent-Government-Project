@@ -18,14 +18,14 @@ const toggleFunctions = () => {
     renderEngagementTable(statistics.houseStats.Total.arrOfLeastEngagedMembers, "least");
     renderEngagementTable(statistics.houseStats.Total.arrOfMostEngagedMembers, "most");
 
-    console.log(statistics.houseStats.Total.arrOfMostEngagedMembers);
+    console.log(statistics.houseStats.Total.leastLoyal);
 
   } else if (senateAttendancePage) {
     renderAttendanceTable(statistics.senateStats);
     renderEngagementTable(statistics.senateStats.Total.arrOfLeastEngagedMembers, "least");
     renderEngagementTable(statistics.senateStats.Total.arrOfMostEngagedMembers, "most");
 
-    console.log(statistics.senateStats.Total.arrOfMostEngagedMembers);
+    console.log(statistics.senateStats.Total.leastLoyal);
   }
 }
 

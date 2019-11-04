@@ -63,12 +63,11 @@ const getVotesWP = (chamber, party) => {
 };
 
 
-
 const getArrMemPerC = chamber => {
   let membersArr = [];
   chamber.results[0].members.forEach(mem => membersArr.push(mem));
   return membersArr;
-}
+};
 
 const getArrMemEng = (chamber, boolean) => {
   let membersArr = [];
@@ -84,7 +83,27 @@ const getArrMemEng = (chamber, boolean) => {
     sortByEngagement = membersArr.sort((a, b) => b.missed_votes_pct - a.missed_votes_pct)
   }
   return sortByEngagement.slice(0, sortByEngagement.length * 0.1);
-}
+};
+
+
+
+const getArrMemLoy = (chamber, typeOfLoyalty) => {
+  let membersArr = [];
+  chamber.results[0].members.forEach(mem => {
+    if (mem.votes_against_party_pct != undefined) {
+      membersArr.push(mem);
+    }
+  });
+  let sortByLoyalty;
+  if (typeOfLoyalty === "least") {
+    sortByLoyalty = membersArr.sort((a, b) => a.votes_with_party_pct - b.votes_with_party_pct)
+  } else {
+    sortByLoyalty = membersArr.sort((a, b) => b.votes_with_party_pct - a.votes_against_party_pct)
+  }
+  return sortByLoyalty.slice(0, sortByLoyalty.length * 0.1);
+};
+
+
 
 const statistics = {
   houseStats: {
@@ -104,7 +123,9 @@ const statistics = {
       "arrOfMembersPerChamber": getArrMemPerC(house),
       "avrgVotesWithParty": getVotesWP(house, false),
       "arrOfLeastEngagedMembers": getArrMemEng(house, false),
-      "arrOfMostEngagedMembers": getArrMemEng(house, true)
+      "arrOfMostEngagedMembers": getArrMemEng(house, true),
+      "leastLoyal": getArrMemLoy(house, "least"),
+      "mostLoyal": getArrMemLoy(house, "most")
     }
   },
   senateStats: {
@@ -125,6 +146,8 @@ const statistics = {
       "avrgVotesWithParty": getVotesWP(senate, false),
       "arrOfLeastEngagedMembers": getArrMemEng(senate, false),
       "arrOfMostEngagedMembers": getArrMemEng(senate, true),
+      "leastLoyal": getArrMemLoy(senate, "least"),
+      "mostLoyal": getArrMemLoy(senate, "most")
     }
   }
 };
