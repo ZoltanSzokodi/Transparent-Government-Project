@@ -10,39 +10,62 @@ const houseLoyaltyPage = document.location.pathname === '/house-loyalty.html';
 // Decide which render function to use according to file path
 const toggleFunctions = () => {
   if (houseDataPage) {
-    renderMembersTable(statistics.houseStats.Total.arrOfMembersPerChamber)
+    const { arrOfMembersPerChamber } = statistics.houseStats.Total;
+
+    renderMembersTable(arrOfMembersPerChamber);
 
   } else if (senateDataPage) {
-    renderMembersTable(statistics.senateStats.Total.arrOfMembersPerChamber)
+    const { arrOfMembersPerChamber } = statistics.senateStats.Total;
+
+    renderMembersTable(arrOfMembersPerChamber);
 
   } else if (houseAttendancePage) {
-    renderAttendanceTable(statistics.houseStats);
-    renderEngagementTable(statistics.houseStats.Total.arrOfLeastEngagedMembers, "least");
-    renderEngagementTable(statistics.houseStats.Total.arrOfMostEngagedMembers, "most");
+    const { houseStats } = statistics;
+    const {
+      arrOfLeastEngagedMembers,
+      arrOfMostEngagedMembers
+    } = statistics.houseStats.Total;
 
-    // console.log(statistics.houseStats.Total.leastLoyal);
+    renderAttendanceTable(houseStats);
+    renderEngagementTable(arrOfLeastEngagedMembers, "least");
+    renderEngagementTable(arrOfMostEngagedMembers, "most");
 
   } else if (senateAttendancePage) {
-    renderAttendanceTable(statistics.senateStats);
-    renderEngagementTable(statistics.senateStats.Total.arrOfLeastEngagedMembers, "least");
-    renderEngagementTable(statistics.senateStats.Total.arrOfMostEngagedMembers, "most");
+    const { senateStats } = statistics;
+    const {
+      arrOfLeastEngagedMembers,
+      arrOfMostEngagedMembers
+    } = statistics.senateStats.Total;
 
-    console.log(statistics.senateStats.Total.leastLoyal)
+    renderAttendanceTable(senateStats);
+    renderEngagementTable(arrOfLeastEngagedMembers, "least");
+    renderEngagementTable(arrOfMostEngagedMembers, "most");
 
   } else if (senateLoyaltyPage) {
-    renderAttendanceTable(statistics.senateStats);
-    renderLoyaltyTable(statistics.senateStats.Total.leastLoyal, "least");
-    renderLoyaltyTable(statistics.senateStats.Total.mostLoyal, "most");
+    const { senateStats } = statistics;
+    const {
+      leastLoyal,
+      mostLoyal
+    } = statistics.senateStats.Total;
 
-    console.log(statistics.senateStats.Total.leastLoyal);
+    renderAttendanceTable(senateStats);
+    renderLoyaltyTable(leastLoyal, "least");
+    renderLoyaltyTable(mostLoyal, "most");
+
+    console.log(leastLoyal);
 
   } else if (houseLoyaltyPage) {
-    renderAttendanceTable(statistics.houseStats);
-    renderLoyaltyTable(statistics.houseStats.Total.leastLoyal, "least");
-    renderLoyaltyTable(statistics.houseStats.Total.mostLoyal, "most");
+    const { houseStats } = statistics;
+    const {
+      leastLoyal,
+      mostLoyal
+    } = statistics.houseStats.Total;
 
-    console.log(statistics.houseStats.Total.leastLoyal);
+    renderAttendanceTable(houseStats);
+    renderLoyaltyTable(leastLoyal, "least");
+    renderLoyaltyTable(mostLoyal, "most");
 
+    console.log(leastLoyal);
   }
 }
 
@@ -86,7 +109,7 @@ const renderAttendanceTable = stats => {
 }
 
 const renderEngagementTable = (stats, type) => {
-  const table = type === "least" ? document.querySelector('.least-engaged-table_tbody') : document.querySelector(".most-engaged-table_tbody");
+  const table = type === "least" ? document.querySelector('.least-table_tbody') : document.querySelector(".most-table_tbody");
 
   stats.forEach((mem, i) => {
     let tr = document.createElement("tr");
@@ -106,7 +129,7 @@ const renderEngagementTable = (stats, type) => {
 }
 
 const renderLoyaltyTable = (stats, type) => {
-  const table = type === "least" ? document.querySelector('.least-loyal-table_tbody') : document.querySelector(".most-loyal-table_tbody");
+  const table = type === "least" ? document.querySelector('.least-table_tbody') : document.querySelector(".most-table_tbody");
 
   stats.forEach((mem, i) => {
     let tr = document.createElement("tr");
@@ -119,7 +142,7 @@ const renderLoyaltyTable = (stats, type) => {
             ${mem.last_name}
           <a/>
         </td>
-        <td>${mem.votes_against_party_pct}</td>
+        <td>${mem.votes_against_party_pct} %</td>
         <td>${mem.votes_with_party_pct} %</td>`;
     table.appendChild(tr);
   });

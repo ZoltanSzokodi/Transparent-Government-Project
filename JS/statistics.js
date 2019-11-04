@@ -2,6 +2,7 @@ import house from '../data/pro-congress-115-house.js';
 import senate from '../data/pro-congress-115-senate.js';
 
 // STATISTICS ------------------------------------------------------------
+
 const getNumMemPerP = (chamber, party) => {
   let membersArr = [];
   chamber.results[0].members.forEach(mem => {
@@ -11,34 +12,6 @@ const getNumMemPerP = (chamber, party) => {
   })
   return membersArr.length;
 };
-
-// const getVotesWP = (chamber, party) => {
-//   let count = 0;
-//   let votesSum = 0;
-//   chamber.results[0].members.forEach(mem => {
-//     if (mem.party === party) {
-//       if (mem.votes_with_party_pct != NaN && mem.votes_with_party_pct != undefined) {
-//         votesSum += mem.votes_with_party_pct * 1
-//         count++;
-//       }
-//     }
-//   })
-//   let votesAvrg = votesSum === 0 ? 0 : votesSum / count;
-//   return votesAvrg.toFixed(2) * 1;
-// };
-
-// const getAvgVotesWP = chamber => {
-//   let count = 0;
-//   let votesSum = 0;
-//   chamber.results[0].members.forEach(mem => {
-//     if (mem.votes_with_party_pct != NaN && mem.votes_with_party_pct != undefined) {
-//       votesSum += mem.votes_with_party_pct * 1
-//       count++;
-//     }
-//   })
-//   let votesAvrg = votesSum / count;
-//   return votesAvrg.toFixed(2) * 1;
-// }
 
 const getVotesWP = (chamber, party) => {
   let count = 0;
