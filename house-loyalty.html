@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./dist/style.css">
-  <title>House Attendance</title>
+  <title>Party Loyalty | House</title>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
   <div class="container">
     <div class="jumbotron jumbotron-fluid m-0">
       <div class="container">
-        <h1 class="display-4">House Attendance</h1>
+        <h1 class="display-4">House - Party Loyalty</h1>
         <p class="lead">Transparent Government in Facts</p>
       </div>
     </div>
@@ -59,7 +59,7 @@
               Party Loyalty
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="./house-loyalty.html">House</a>
+              <a class="dropdown-item" href="#">House</a>
               <a class="dropdown-item" href="./senate-loyalty.html">Senate</a>
             </div>
           </li>
@@ -68,11 +68,11 @@
     </nav>
 
     <div class="card mt-3" style="max-width: 100%;">
-      <h2>House at Glace</h2>
+      <h2>Senate at Glace</h2>
       <div class="row no-gutters">
         <div class="table-responsive">
           <table id="house-attendance-table" class="table table-striped">
-            <caption>Number of Representatives per Party</caption>
+            <caption>Number of Senators per Party</caption>
             <thead class="thead-dark">
               <tr>
                 <th>Party</th>
@@ -80,63 +80,52 @@
                 <th>% Voted with Party</th>
               </tr>
             </thead>
-            <tbody class="attendance-table_tbody">
-            </tbody>
+            <tbody class="attendance-table_tbody"></tbody>
           </table>
         </div>
 
         <div class="card mt-3" style="max-width: 100%;">
-          <h2>Least Engaged (Bottom 10% Attendance)</h2>
+          <h2>Least Loyal to Party - 10%</h2>
           <div class="row no-gutters">
             <div class="table-responsive">
-              <table id="senate-engaged-table" class="table table-striped">
-                <caption>Number of Representatives per Party</caption>
+              <table id="senate-loyal-table" class="table table-striped">
+                <caption>Number of Senators per Party</caption>
                 <thead class="thead-dark">
                   <tr>
                     <th>Name</th>
-                    <th>Number of Missed Votes</th>
-                    <th>% Missed</th>
+                    <th>% of Votes against Party</th>
+                    <th>% of Votes with Party</th>
                   </tr>
                 </thead>
-                <tbody class="least-engaged-table_tbody"></tbody>
+                <tbody class="least-loyal-table_tbody"></tbody>
               </table>
             </div>
 
             <div class="card mt-3" style="max-width: 100%;">
-              <h2>Most Engaged (Top 10% Attendance)</h2>
+              <h2>Most Loyal to Party - 10%</h2>
               <div class="row no-gutters">
                 <div class="table-responsive">
-                  <table id="senate-engaged-table" class="table table-striped">
-                    <caption>Number of Representatives per Party</caption>
+                  <table id="senate-loyal-table" class="table table-striped">
+                    <caption>Number of Senators per Party</caption>
                     <thead class="thead-dark">
                       <tr>
                         <th>Name</th>
-                        <th>Number of Missed Votes</th>
-                        <th>% Missed</th>
+                        <th>% of Votes against Party</th>
+                        <th>% of Votes with Party</th>
                       </tr>
                     </thead>
-                    <tbody class="most-engaged-table_tbody"></tbody>
+                    <tbody class="most-loyal-table_tbody"></tbody>
                   </table>
                 </div>
 
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">Attendance</h5>
-                    <p class="card-text">The Constitution specifies that a majority of members constitutes a quorum to
-                      do
-                      business in each house. Representatives and senators rarely force the presence of a quorum by
-                      demanding
-                      quorum calls; thus, in most cases, debates continue even if a majority is not present.
-                      <br><br>
-                      The House uses roll-call votes; a clerk calls out the names of all the senators, each senator
-                      stating
-                      "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most
-                      formal
-                      matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote
-                      by
-                      electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice
-                      President
-                      may (if present) cast the tiebreaking vote.</p>
+                    <h5 class="card-title">Party Loyalty</h5>
+                    <p class="card-text">Those who consider themselves to be strong partisans, strong Democrats and
+                      strong
+                      Republicans respectively, tend to be the most faithful in voting for their party's nominee for
+                      office and
+                      legislation that backs their party's agenda.</p>
                   </div>
                 </div>
               </div>

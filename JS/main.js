@@ -4,6 +4,8 @@ const senateDataPage = document.location.pathname === "/senate-data.html";
 const houseDataPage = document.location.pathname === "/house-data.html";
 const senateAttendancePage = document.location.pathname === "/senate-attendance.html";
 const houseAttendancePage = document.location.pathname === "/house-attendance.html";
+const senateLoyaltyPage = document.location.pathname === '/senate-loyalty.html';
+const houseLoyaltyPage = document.location.pathname === '/house-loyalty.html';
 
 // Decide which render function to use according to file path
 const toggleFunctions = () => {
@@ -18,14 +20,29 @@ const toggleFunctions = () => {
     renderEngagementTable(statistics.houseStats.Total.arrOfLeastEngagedMembers, "least");
     renderEngagementTable(statistics.houseStats.Total.arrOfMostEngagedMembers, "most");
 
-    console.log(statistics.houseStats.Total.leastLoyal);
+    // console.log(statistics.houseStats.Total.leastLoyal);
 
   } else if (senateAttendancePage) {
     renderAttendanceTable(statistics.senateStats);
     renderEngagementTable(statistics.senateStats.Total.arrOfLeastEngagedMembers, "least");
     renderEngagementTable(statistics.senateStats.Total.arrOfMostEngagedMembers, "most");
 
+    console.log(statistics.senateStats.Total.leastLoyal)
+
+  } else if (senateLoyaltyPage) {
+    renderAttendanceTable(statistics.senateStats);
+    renderLoyaltyTable(statistics.senateStats.Total.leastLoyal, "least");
+    renderLoyaltyTable(statistics.senateStats.Total.mostLoyal, "most");
+
     console.log(statistics.senateStats.Total.leastLoyal);
+
+  } else if (houseLoyaltyPage) {
+    renderAttendanceTable(statistics.houseStats);
+    renderLoyaltyTable(statistics.houseStats.Total.leastLoyal, "least");
+    renderLoyaltyTable(statistics.houseStats.Total.mostLoyal, "most");
+
+    console.log(statistics.houseStats.Total.leastLoyal);
+
   }
 }
 
@@ -84,6 +101,26 @@ const renderEngagementTable = (stats, type) => {
         </td>
         <td>${mem.missed_votes}</td>
         <td>${mem.missed_votes_pct} %</td>`;
+    table.appendChild(tr);
+  });
+}
+
+const renderLoyaltyTable = (stats, type) => {
+  const table = type === "least" ? document.querySelector('.least-loyal-table_tbody') : document.querySelector(".most-loyal-table_tbody");
+
+  stats.forEach((mem, i) => {
+    let tr = document.createElement("tr");
+
+    tr.innerHTML =
+      `<td>${i + 1}. 
+          <a href="${mem.url}" target="_blank">
+            ${mem.first_name} 
+            ${mem.middle_name === null ? " " : mem.middle_name} 
+            ${mem.last_name}
+          <a/>
+        </td>
+        <td>${mem.votes_against_party_pct}</td>
+        <td>${mem.votes_with_party_pct} %</td>`;
     table.appendChild(tr);
   });
 }

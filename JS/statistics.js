@@ -90,7 +90,7 @@ const getArrMemEng = (chamber, boolean) => {
 const getArrMemLoy = (chamber, typeOfLoyalty) => {
   let membersArr = [];
   chamber.results[0].members.forEach(mem => {
-    if (mem.votes_against_party_pct != undefined) {
+    if (mem.votes_with_party_pct != undefined) {
       membersArr.push(mem);
     }
   });
@@ -98,7 +98,7 @@ const getArrMemLoy = (chamber, typeOfLoyalty) => {
   if (typeOfLoyalty === "least") {
     sortByLoyalty = membersArr.sort((a, b) => a.votes_with_party_pct - b.votes_with_party_pct)
   } else {
-    sortByLoyalty = membersArr.sort((a, b) => b.votes_with_party_pct - a.votes_against_party_pct)
+    sortByLoyalty = membersArr.sort((a, b) => b.votes_with_party_pct - a.votes_with_party_pct)
   }
   return sortByLoyalty.slice(0, sortByLoyalty.length * 0.1);
 };
