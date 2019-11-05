@@ -37,6 +37,7 @@ const toggleFunctions = () => {
     const checkboxes = document.querySelectorAll('.checkbox');
     const t_body = document.querySelector(".members-table_tbody");
     let checkBoxArr = ["R", "D", "I"];
+    let statesArr = ["All", "AK", "AL", "AR", "AZ", "All", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"];
 
     checkboxes.forEach(c => {
       c.addEventListener('click', e => {
@@ -52,6 +53,7 @@ const toggleFunctions = () => {
       });
     })
 
+    renderStateSelect(statesArr);
     renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
 
   } else if (houseAttendancePage) {
@@ -105,13 +107,22 @@ const toggleFunctions = () => {
 }
 
 // VIEW---------------------------------------------------
+const renderStateSelect = (stArr) => {
+  const select = document.getElementById("table-state-select");
+
+  stArr.forEach(state => {
+    let option = document.createElement("option");
+    option.innerHTML = state
+    select.appendChild(option);
+  });
+}
 
 const renderMembersTable = (stats, checkArr) => {
   const t_body = document.querySelector(".members-table_tbody");
   const tableLength = document.querySelector(".table-length");
   let tableCount = 0;
 
-  stats.forEach((mem, i) => {
+  stats.forEach(mem => {
     if (checkArr.includes(mem.party)) {
       let tr = document.createElement("tr");
       tableCount++;
