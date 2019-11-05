@@ -13,48 +13,64 @@ const toggleFunctions = () => {
   if (houseDataPage) {
     const { arrOfMembersPerChamber } = statistics.houseStats.Total;
     const checkboxes = document.querySelectorAll('.checkbox');
+    const select = document.getElementById("table-state-select");
     const t_body = document.querySelector(".members-table_tbody");
     let checkBoxArr = ["R", "D", "I"];
+    let selectedState = ["All"];
 
     checkboxes.forEach(c => {
       c.addEventListener('click', e => {
         if (checkBoxArr.includes(e.target.value)) {
           checkBoxArr.splice(checkBoxArr.indexOf(e.target.value), 1);
           t_body.innerHTML = "";
-          renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+          renderMembersTable(arrOfMembersPerChamber, checkBoxArr, ...selectedState);
         } else {
           checkBoxArr.push(e.target.value);
           t_body.innerHTML = "";
-          renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+          renderMembersTable(arrOfMembersPerChamber, checkBoxArr, ...selectedState);
         }
       });
     })
 
-    renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+    select.addEventListener("click", (e) => {
+      selectedState.splice(0, 1, e.target.value)
+      t_body.innerHTML = "";
+      renderMembersTable(arrOfMembersPerChamber, checkBoxArr, ...selectedState);
+    })
+
+    renderStateSelect();
+    renderMembersTable(arrOfMembersPerChamber, checkBoxArr, ...selectedState);
 
   } else if (senateDataPage) {
     const { arrOfMembersPerChamber } = statistics.senateStats.Total;
     const checkboxes = document.querySelectorAll('.checkbox');
+    const select = document.getElementById("table-state-select");
     const t_body = document.querySelector(".members-table_tbody");
     let checkBoxArr = ["R", "D", "I"];
-    let statesArr = ["All", "AK", "AL", "AR", "AZ", "All", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"];
+    let selectedState = ["All"];
 
     checkboxes.forEach(c => {
       c.addEventListener('click', e => {
         if (checkBoxArr.includes(e.target.value)) {
           checkBoxArr.splice(checkBoxArr.indexOf(e.target.value), 1);
           t_body.innerHTML = "";
-          renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+          renderMembersTable(arrOfMembersPerChamber, checkBoxArr, ...selectedState);
         } else {
           checkBoxArr.push(e.target.value);
           t_body.innerHTML = "";
-          renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+          renderMembersTable(arrOfMembersPerChamber, checkBoxArr, ...selectedState);
         }
       });
     })
 
-    renderStateSelect(statesArr);
-    renderMembersTable(arrOfMembersPerChamber, checkBoxArr);
+    select.addEventListener("click", (e) => {
+      selectedState.splice(0, 1, e.target.value)
+      t_body.innerHTML = "";
+      renderMembersTable(arrOfMembersPerChamber, checkBoxArr, ...selectedState);
+    })
+
+    renderStateSelect();
+    renderMembersTable(arrOfMembersPerChamber, checkBoxArr, ...selectedState);
 
   } else if (houseAttendancePage) {
     const { houseStats } = statistics;
@@ -107,23 +123,25 @@ const toggleFunctions = () => {
 }
 
 // VIEW---------------------------------------------------
-const renderStateSelect = (stArr) => {
+const renderStateSelect = () => {
   const select = document.getElementById("table-state-select");
+  let statesArr = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"];
 
-  stArr.forEach(state => {
+  statesArr.forEach(state => {
     let option = document.createElement("option");
-    option.innerHTML = state
+    option.innerHTML = state;
+    option.value = state;
     select.appendChild(option);
   });
 }
 
-const renderMembersTable = (stats, checkArr) => {
+const renderMembersTable = (stats, checkArr, state) => {
   const t_body = document.querySelector(".members-table_tbody");
   const tableLength = document.querySelector(".table-length");
   let tableCount = 0;
 
   stats.forEach(mem => {
-    if (checkArr.includes(mem.party)) {
+    if (checkArr.includes(mem.party) && state === "All") {
       let tr = document.createElement("tr");
       tableCount++;
 
@@ -142,6 +160,27 @@ const renderMembersTable = (stats, checkArr) => {
             ${mem.votes_with_party_pct === undefined ? "no data" : mem.votes_with_party_pct} %
           </td>`;
       t_body.appendChild(tr);
+    } else if (checkArr.includes(mem.party) && state != "All") {
+      if (mem.state === state) {
+        let tr = document.createElement("tr");
+        tableCount++;
+
+        tr.innerHTML =
+          `<td> 
+            <a href="${mem.url}" target="_blank">
+              ${mem.first_name} 
+              ${mem.middle_name === null ? " " : mem.middle_name} 
+              ${mem.last_name}
+            <a/>
+          </td>
+          <td>${mem.party}</td>
+          <td>${mem.state}</td>
+          <td>${mem.seniority}</td>
+          <td>
+            ${mem.votes_with_party_pct === undefined ? "no data" : mem.votes_with_party_pct} %
+          </td>`;
+        t_body.appendChild(tr);
+      }
     }
   });
   tableLength.textContent = tableCount;
