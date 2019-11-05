@@ -7,7 +7,6 @@ import {
   renderLoyaltyTable
 } from "./View.js";
 
-
 // CONTROLLER - ROUTES ---------------------------------------------
 
 const senateDataPage = document.location.pathname === "/senate-data.html";

@@ -1,6 +1,32 @@
 import house from "../data/pro-congress-115-house.js";
 import senate from "../data/pro-congress-115-senate.js";
 
+// FETCH DATA ---------------------------------------------------
+
+// const urlHouse = 'https://api.propublica.org/congress/v1/116/house/members.json';
+// const urlSenate = 'https://api.propublica.org/congress/v1/116/senate/members.json';
+// let house;
+// let senate;
+
+// fetch(urlHouse, {
+//   headers: {
+//     "X-API-Key": "ZB4bMdACwtHaGhmkzBLLOpSQaP7BNNba1wJPGEKN"
+//   }
+// })
+//   .then(res => res.json())
+//   .then(data => house = data)
+//   .catch(err => console.log(err))
+
+// fetch(urlSenate, {
+//   headers: {
+//     "X-API-Key": "ZB4bMdACwtHaGhmkzBLLOpSQaP7BNNba1wJPGEKN"
+//   }
+// })
+//   .then(res => res.json())
+//   .then(data => senate = data)
+//   .catch(err => console.log(err))
+
+
 // STATISTICS OBJECT ---------------------------------------------------
 const statistics = {
   houseStats: {
@@ -104,6 +130,7 @@ function getArrMemEng(chamber, boolean) {
   } else {
     sortByEngagement = membersArr.sort((a, b) => b.missed_votes_pct - a.missed_votes_pct)
   }
+
   return sortByEngagement.slice(0, sortByEngagement.length * 0.1);
 }
 
