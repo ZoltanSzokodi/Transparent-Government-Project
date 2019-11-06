@@ -1,79 +1,138 @@
-import house from "../data/pro-congress-115-house.js";
-import senate from "../data/pro-congress-115-senate.js";
+// import house from "../data/pro-congress-115-house.js";
+// import senate from "../data/pro-congress-115-senate.js";
+import APIkey from "../data/APIkey.js";
 
 // FETCH DATA ---------------------------------------------------
-
-// const urlHouse = 'https://api.propublica.org/congress/v1/116/house/members.json';
-// const urlSenate = 'https://api.propublica.org/congress/v1/116/senate/members.json';
-// let house;
-// let senate;
-
-// fetch(urlHouse, {
-//   headers: {
-//     "X-API-Key": "ZB4bMdACwtHaGhmkzBLLOpSQaP7BNNba1wJPGEKN"
+// async function getData(congressNo, chamber) {
+//   let url = `https://api.propublica.org/congress/v1/${congressNo}/${chamber}/members.json`;
+//   try {
+//     let response = await fetch(url, {
+//       headers: {
+//         "X-API-Key": APIkey
+//       }
+//     })
+//     return await response.json();
+//   } catch (err) {
+//     console.log(err);
 //   }
-// })
-//   .then(res => res.json())
-//   .then(data => house = data)
-//   .catch(err => console.log(err))
+// }
 
-// fetch(urlSenate, {
-//   headers: {
-//     "X-API-Key": "ZB4bMdACwtHaGhmkzBLLOpSQaP7BNNba1wJPGEKN"
-//   }
-// })
-//   .then(res => res.json())
-//   .then(data => senate = data)
-//   .catch(err => console.log(err))
 
+async function getData2() {
+  let url1 = "https://api.propublica.org/congress/v1/116/senate/members.json";
+  let url2 = "https://api.propublica.org/congress/v1/116/house/members.json";
+
+  let response = await Promise.all([
+    fetch(url1, { headers: { "X-API-Key": APIkey } }).then(value => value.json()),
+    fetch(url2, { headers: { "X-API-Key": APIkey } }).then(value => value.json())
+  ]);
+
+  return response;
+}
 
 // STATISTICS OBJECT ---------------------------------------------------
-const statistics = {
-  houseStats: {
-    "Republicans": {
-      "numOfMembersPerParty": getNumMemPerP(house, "R"),
-      "votesWithParty": getVotesWP(house, "R")
+async function statistics() {
+  // let senate = await getData(116, "senate").then(data => data);
+  // let house = await getData(116, "house").then(data => data);
+  let congress = await getData2().then(data => data);
+
+  return {
+    senateStats: {
+      "Republicans": {
+        "numOfMembersPerParty": getNumMemPerP(congress[0], "R"),
+        "votesWithParty": getVotesWP(congress[0], "R")
+      },
+      "Democrats": {
+        "numOfMembersPerParty": getNumMemPerP(congress[0], "D"),
+        "votesWithParty": getVotesWP(congress[0], "D")
+      },
+      "Independent": {
+        "numOfMembersPerParty": getNumMemPerP(congress[0], "I"),
+        "votesWithParty": getVotesWP(congress[0], "I")
+      },
+      "Total": {
+        "arrOfMembersPerChamber": getArrMemPerC(congress[0]),
+        "avrgVotesWithParty": getVotesWP(congress[0], false),
+        "arrOfLeastEngagedMembers": getArrMemEng(congress[0], false),
+        "arrOfMostEngagedMembers": getArrMemEng(congress[0], true),
+        "leastLoyal": getArrMemLoy(congress[0], "least"),
+        "mostLoyal": getArrMemLoy(congress[0], "most")
+      }
     },
-    "Democrats": {
-      "numOfMembersPerParty": getNumMemPerP(house, "D"),
-      "votesWithParty": getVotesWP(house, "D")
-    },
-    "Independent": {
-      "numOfMembersPerParty": getNumMemPerP(house, "I"),
-      "votesWithParty": getVotesWP(house, "I")
-    },
-    "Total": {
-      "arrOfMembersPerChamber": getArrMemPerC(house),
-      "avrgVotesWithParty": getVotesWP(house, false),
-      "arrOfLeastEngagedMembers": getArrMemEng(house, false),
-      "arrOfMostEngagedMembers": getArrMemEng(house, true),
-      "leastLoyal": getArrMemLoy(house, "least"),
-      "mostLoyal": getArrMemLoy(house, "most")
+    houseStats: {
+      "Republicans": {
+        "numOfMembersPerParty": getNumMemPerP(congress[1], "R"),
+        "votesWithParty": getVotesWP(congress[1], "R")
+      },
+      "Democrats": {
+        "numOfMembersPerParty": getNumMemPerP(congress[1], "D"),
+        "votesWithParty": getVotesWP(congress[1], "D")
+      },
+      "Independent": {
+        "numOfMembersPerParty": getNumMemPerP(congress[1], "I"),
+        "votesWithParty": getVotesWP(congress[1], "I")
+      },
+      "Total": {
+        "arrOfMembersPerChamber": getArrMemPerC(congress[1]),
+        "avrgVotesWithParty": getVotesWP(congress[1], false),
+        "arrOfLeastEngagedMembers": getArrMemEng(congress[1], false),
+        "arrOfMostEngagedMembers": getArrMemEng(congress[1], true),
+        "leastLoyal": getArrMemLoy(congress[1], "least"),
+        "mostLoyal": getArrMemLoy(congress[1], "most")
+      }
     }
-  },
-  senateStats: {
-    "Republicans": {
-      "numOfMembersPerParty": getNumMemPerP(senate, "R"),
-      "votesWithParty": getVotesWP(senate, "R")
-    },
-    "Democrats": {
-      "numOfMembersPerParty": getNumMemPerP(senate, "D"),
-      "votesWithParty": getVotesWP(senate, "D")
-    },
-    "Independent": {
-      "numOfMembersPerParty": getNumMemPerP(senate, "I"),
-      "votesWithParty": getVotesWP(senate, "I")
-    },
-    "Total": {
-      "arrOfMembersPerChamber": getArrMemPerC(senate),
-      "avrgVotesWithParty": getVotesWP(senate, false),
-      "arrOfLeastEngagedMembers": getArrMemEng(senate, false),
-      "arrOfMostEngagedMembers": getArrMemEng(senate, true),
-      "leastLoyal": getArrMemLoy(senate, "least"),
-      "mostLoyal": getArrMemLoy(senate, "most")
-    }
-  }
-};
+  };
+}
+// statistics().then(data => {
+//   console.log(data.houseStats);
+// });
+
+// const statistics = {
+//   houseStats: {
+//     "Republicans": {
+//       "numOfMembersPerParty": getNumMemPerP(house, "R"),
+//       "votesWithParty": getVotesWP(house, "R")
+//     },
+//     "Democrats": {
+//       "numOfMembersPerParty": getNumMemPerP(house, "D"),
+//       "votesWithParty": getVotesWP(house, "D")
+//     },
+//     "Independent": {
+//       "numOfMembersPerParty": getNumMemPerP(house, "I"),
+//       "votesWithParty": getVotesWP(house, "I")
+//     },
+//     "Total": {
+//       "arrOfMembersPerChamber": getArrMemPerC(house),
+//       "avrgVotesWithParty": getVotesWP(house, false),
+//       "arrOfLeastEngagedMembers": getArrMemEng(house, false),
+//       "arrOfMostEngagedMembers": getArrMemEng(house, true),
+//       "leastLoyal": getArrMemLoy(house, "least"),
+//       "mostLoyal": getArrMemLoy(house, "most")
+//     }
+//   },
+//   senateStats: {
+//     "Republicans": {
+//       "numOfMembersPerParty": getNumMemPerP(senate, "R"),
+//       "votesWithParty": getVotesWP(senate, "R")
+//     },
+//     "Democrats": {
+//       "numOfMembersPerParty": getNumMemPerP(senate, "D"),
+//       "votesWithParty": getVotesWP(senate, "D")
+//     },
+//     "Independent": {
+//       "numOfMembersPerParty": getNumMemPerP(senate, "I"),
+//       "votesWithParty": getVotesWP(senate, "I")
+//     },
+//     "Total": {
+//       "arrOfMembersPerChamber": getArrMemPerC(senate),
+//       "avrgVotesWithParty": getVotesWP(senate, false),
+//       "arrOfLeastEngagedMembers": getArrMemEng(senate, false),
+//       "arrOfMostEngagedMembers": getArrMemEng(senate, true),
+//       "leastLoyal": getArrMemLoy(senate, "least"),
+//       "mostLoyal": getArrMemLoy(senate, "most")
+//     }
+//   }
+// };
 
 // STATISTICS CALCULATIONS ---------------------------------------------------
 

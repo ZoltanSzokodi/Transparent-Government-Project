@@ -18,9 +18,13 @@ const houseLoyaltyPage = document.location.pathname === "/house-loyalty.html";
 
 // CONTROLLER - ROUTER ---------------------------------------------
 
-function controllerRouter() {
+async function controllerRouter() {
+  let data = await statistics().then(data => data);
+  // let senateStats = await statistics().then(data => data.senateStats);
+  // let houseStats = await statistics().then(data => data.houseStats);
+
   if (houseDataPage || senateDataPage) {
-    const { arrOfMembersPerChamber } = houseDataPage ? statistics.houseStats.Total : statistics.senateStats.Total;
+    const { arrOfMembersPerChamber } = houseDataPage ? data.houseStats.Total : data.senateStats.Total;
     const checkboxes = document.querySelectorAll(".checkbox");
     const select = document.getElementById("table-state-select");
     const t_body = document.querySelector(".members-table_tbody");
@@ -51,46 +55,46 @@ function controllerRouter() {
     renderMembersTable(arrOfMembersPerChamber, checkBoxArr, ...selectedState)
 
   } else if (houseAttendancePage) {
-    const { houseStats } = statistics;
+    // const { houseStats } = statistics;
     const {
       arrOfLeastEngagedMembers,
       arrOfMostEngagedMembers
-    } = statistics.houseStats.Total;
+    } = data.houseStats.Total;
 
-    renderChamberAtGlance(houseStats);
+    renderChamberAtGlance(data.houseStats);
     renderEngagementTable(arrOfLeastEngagedMembers, "least")
     renderEngagementTable(arrOfMostEngagedMembers, "most")
 
   } else if (senateAttendancePage) {
-    const { senateStats } = statistics;
+    // const { senateStats } = statistics;
     const {
       arrOfLeastEngagedMembers,
       arrOfMostEngagedMembers
-    } = statistics.senateStats.Total;
+    } = data.senateStats.Total;
 
-    renderChamberAtGlance(senateStats);
+    renderChamberAtGlance(data.senateStats);
     renderEngagementTable(arrOfLeastEngagedMembers, "least")
     renderEngagementTable(arrOfMostEngagedMembers, "most")
 
   } else if (senateLoyaltyPage) {
-    const { senateStats } = statistics;
+    // const { senateStats } = statistics;
     const {
       leastLoyal,
       mostLoyal
-    } = statistics.senateStats.Total;
+    } = data.senateStats.Total;
 
-    renderChamberAtGlance(senateStats);
+    renderChamberAtGlance(data.senateStats);
     renderLoyaltyTable(leastLoyal, "least")
     renderLoyaltyTable(mostLoyal, "most")
 
   } else if (houseLoyaltyPage) {
-    const { houseStats } = statistics;
+    // const { houseStats } = statistics;
     const {
       leastLoyal,
       mostLoyal
-    } = statistics.houseStats.Total;
+    } = data.houseStats.Total;
 
-    renderChamberAtGlance(houseStats);
+    renderChamberAtGlance(data.houseStats);
     renderLoyaltyTable(leastLoyal, "least")
     renderLoyaltyTable(mostLoyal, "most")
   }
