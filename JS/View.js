@@ -73,11 +73,14 @@ export function renderChamberAtGlance(stats) {
     let tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${key}</td>
-      <td>${key === "Total" ? stats[key].arrOfMembersPerChamber.length : stats[key].numOfMembersPerParty}</td>
+      <td>${key === "Total" ? stats[key].membersPerChamber.length : stats[key].membersPerParty}</td>
       <td>${key === "Total" ? stats[key].avrgVotesWithParty : stats[key].votesWithParty} %</td>`;
     table.appendChild(tr)
   }
 }
+
+
+
 
 // RENDER ENGAGEMENT TABLE
 export function renderEngagementTable(stats, type) {
