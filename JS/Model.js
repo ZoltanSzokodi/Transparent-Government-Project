@@ -187,7 +187,9 @@ function getArrMemEngOrLoy(chamber, type, quality) {
     } else {
       sortByQuality = membersArr.sort((a, b) => b.votes_with_party_pct - a.votes_with_party_pct)
     }
+
     return sortByQuality.slice(0, sortByQuality.length * 0.1);
+
   } else if (type === "engagement") {
     chamber.results[0].members.forEach(mem => {
       if (mem.missed_votes_pct != undefined) {

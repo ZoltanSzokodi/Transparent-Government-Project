@@ -3,8 +3,7 @@ import {
   renderStateSelect,
   renderMembersTable,
   renderChamberAtGlance,
-  renderEngagementTable,
-  renderLoyaltyTable
+  renderEngagementOrLoyaltyTable
 } from "./View.js";
 
 // CONTROLLER - ROUTES ---------------------------------------------
@@ -62,8 +61,10 @@ async function controllerRouter() {
     } = data.houseStats.Total;
 
     renderChamberAtGlance(data.houseStats);
-    renderEngagementTable(leastEngaged, "least")
-    renderEngagementTable(mostEngaged, "most")
+    renderEngagementOrLoyaltyTable(leastEngaged, "engagement", "least")
+    renderEngagementOrLoyaltyTable(mostEngaged, "engagement", "most")
+    // renderEngagementTable(leastEngaged, "least")
+    // renderEngagementTable(mostEngaged, "most")
 
   } else if (senateAttendancePage) {
     // const { senateStats } = statistics;
@@ -73,8 +74,10 @@ async function controllerRouter() {
     } = data.senateStats.Total;
 
     renderChamberAtGlance(data.senateStats);
-    renderEngagementTable(leastEngaged, "least")
-    renderEngagementTable(mostEngaged, "most")
+    renderEngagementOrLoyaltyTable(leastEngaged, "engagement", "least")
+    renderEngagementOrLoyaltyTable(mostEngaged, "engagement", "most")
+    // renderEngagementTable(leastEngaged, "least")
+    // renderEngagementTable(mostEngaged, "most")
 
   } else if (senateLoyaltyPage) {
     // const { senateStats } = statistics;
@@ -84,8 +87,10 @@ async function controllerRouter() {
     } = data.senateStats.Total;
 
     renderChamberAtGlance(data.senateStats);
-    renderLoyaltyTable(leastLoyal, "least")
-    renderLoyaltyTable(mostLoyal, "most")
+    renderEngagementOrLoyaltyTable(leastLoyal, "loyalty", "least")
+    renderEngagementOrLoyaltyTable(mostLoyal, "loyalty", "most")
+    // renderLoyaltyTable(leastLoyal, "least")
+    // renderLoyaltyTable(mostLoyal, "most")
 
   } else if (houseLoyaltyPage) {
     // const { houseStats } = statistics;
@@ -95,8 +100,10 @@ async function controllerRouter() {
     } = data.houseStats.Total;
 
     renderChamberAtGlance(data.houseStats);
-    renderLoyaltyTable(leastLoyal, "least")
-    renderLoyaltyTable(mostLoyal, "most")
+    renderEngagementOrLoyaltyTable(leastLoyal, "loyalty", "least")
+    renderEngagementOrLoyaltyTable(mostLoyal, "loyalty", "most")
+    // renderLoyaltyTable(leastLoyal, "least")
+    // renderLoyaltyTable(mostLoyal, "most")
   }
 }
 
