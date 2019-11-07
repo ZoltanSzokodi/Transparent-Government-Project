@@ -79,48 +79,6 @@ export function renderChamberAtGlance(stats) {
   }
 }
 
-// RENDER ENGAGEMENT TABLE
-// export function renderEngagementTable(stats, type) {
-//   const table = type === "least" ? document.querySelector('.least-table_tbody') : document.querySelector(".most-table_tbody");
-
-//   stats.forEach((mem, i) => {
-//     let tr = document.createElement("tr");
-
-//     tr.innerHTML =
-//       `<td>${i + 1}. 
-//           <a href="${mem.url}" target="_blank">
-//             ${mem.first_name} 
-//             ${mem.middle_name === null ? " " : mem.middle_name} 
-//             ${mem.last_name}
-//           <a/>
-//         </td>
-//         <td>${mem.missed_votes}</td>
-//         <td>${mem.missed_votes_pct} %</td>`;
-//     table.appendChild(tr)
-//   });
-// }
-
-// // RENDER LOYALTY TABLE
-// export function renderLoyaltyTable(stats, type) {
-//   const table = type === "least" ? document.querySelector('.least-table_tbody') : document.querySelector(".most-table_tbody");
-
-//   stats.forEach((mem, i) => {
-//     let tr = document.createElement("tr");
-
-//     tr.innerHTML =
-//       `<td>${i + 1}. 
-//           <a href="${mem.url}" target="_blank">
-//             ${mem.first_name} 
-//             ${mem.middle_name === null ? " " : mem.middle_name} 
-//             ${mem.last_name}
-//           <a/>
-//         </td>
-//         <td>${mem.votes_against_party_pct} %</td>
-//         <td>${mem.votes_with_party_pct} %</td>`;
-//     table.appendChild(tr);
-//   })
-// }
-
 // RENDER ENGAGEMENT OR LOYALTY TABLE
 export function renderEngagementOrLoyaltyTable(stats, type, quality) {
   const table = quality === "least" ? document.querySelector('.least-table_tbody') : document.querySelector(".most-table_tbody");
