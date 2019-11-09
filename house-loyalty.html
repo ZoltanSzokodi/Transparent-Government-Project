@@ -75,74 +75,83 @@
       </div>
     </nav>
 
-    <div class="card" style="border: none; border-radius: 0;">
-      <div class="row">
-        <div class="col-xl-6 p-5">
-          <h5 class="card-title pb-3">Party Loyalty</h5>
-          <p>
-            Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively,
-            tend to be the most faithful in voting for their party's nominee for office and legislation that backs their
-            party's agenda.
-            <br><br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem blanditiis ipsam dignissimos! Nemo
-            quia labore corporis deserunt vel adipisci, aspernatur ut est veniam eos corrupti sunt perspiciatis, fugit
-            nulla voluptatem doloremque voluptate blanditiis quaerat magnam enim commodi, debitis minima itaque. Atque
-            nobis error ullam, quidem sequi perferendis eligendi eaque neque!
-          </p>
-        </div>
+    <!-- <div id="loader"></div> -->
+    <div class="spinner-grow" role="status" id="loader">
+      <span class="sr-only">Loading...</span>
+    </div>
 
-        <div class="col-xl-6 p-5">
-          <h5>House at Glace</h5>
-          <div class="table-responsive">
-            <table id="house-attendance-table" class="table table-striped">
-              <caption>House at Glance</caption>
-              <thead class="thead-dark">
-                <tr>
-                  <th>Party</th>
-                  <th>Number of Reps</th>
-                  <th>% Voted with Party</th>
-                </tr>
-              </thead>
-              <tbody class="attendance-table_tbody">
-              </tbody>
-            </table>
+    <div style="display:none;" id="data-tables" class="animate-bottom">
+      <div class="card" style="border: none; border-radius: 0;">
+        <div class="row">
+          <div class="col-xl-6 p-5">
+            <h5 class="card-title pb-3">Party Loyalty</h5>
+            <p>
+              Those who consider themselves to be strong partisans, strong Democrats and strong Republicans
+              respectively,
+              tend to be the most faithful in voting for their party's nominee for office and legislation that backs
+              their
+              party's agenda.
+              <br><br>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem blanditiis ipsam dignissimos! Nemo
+              quia labore corporis deserunt vel adipisci, aspernatur ut est veniam eos corrupti sunt perspiciatis, fugit
+              nulla voluptatem doloremque voluptate blanditiis quaerat magnam enim commodi, debitis minima itaque. Atque
+              nobis error ullam, quidem sequi perferendis eligendi eaque neque!
+            </p>
+          </div>
+
+          <div class="col-xl-6 p-5">
+            <h5>House at Glace</h5>
+            <div class="table-responsive">
+              <table id="house-attendance-table" class="table table-striped">
+                <caption>House at Glance</caption>
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Party</th>
+                    <th>Number of Reps</th>
+                    <th>% Voted with Party</th>
+                  </tr>
+                </thead>
+                <tbody class="attendance-table_tbody">
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="card members-tbl" style="border: none; border-radius: 0;">
-      <div class="row no-gutters">
-        <div class="col-xl-6">
-          <h5 class="pl-3">Least Loyal 10%</h5>
-          <div class="table-responsive">
-            <table id="senate-engaged-table" class="table table-striped">
-              <caption class="pl-3">Representatives Least Loyal to Their Party</caption>
-              <thead class="thead-dark">
-                <tr>
-                  <th>Name</th>
-                  <th>Votes against Party</th>
-                  <th>Votes with Party</th>
-                </tr>
-              </thead>
-              <tbody class="least-table_tbody"></tbody>
-            </table>
+      <div class="card members-tbl" style="border: none; border-radius: 0;">
+        <div class="row no-gutters">
+          <div class="col-xl-6">
+            <h5 class="pl-3">Least Loyal 10%</h5>
+            <div class="table-responsive">
+              <table id="senate-engaged-table" class="table table-striped">
+                <caption class="pl-3">Representatives Least Loyal to Their Party</caption>
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Name</th>
+                    <th>Votes against Party</th>
+                    <th>Votes with Party</th>
+                  </tr>
+                </thead>
+                <tbody class="least-table_tbody"></tbody>
+              </table>
+            </div>
           </div>
-        </div>
-        <div class="col-xl-6 p-0">
-          <h5 class="pl-3">Most Loyal 10%</h5>
-          <div class="table-responsive">
-            <table id="senate-engaged-table" class="table table-striped">
-              <caption class="pl-3">Representatives Most Loyal to Their Party</caption>
-              <thead class="thead-dark">
-                <tr>
-                  <th>Name</th>
-                  <th>Votes against Party</th>
-                  <th>Votes with Party</th>
-                </tr>
-              </thead>
-              <tbody class="most-table_tbody"></tbody>
-            </table>
+          <div class="col-xl-6 p-0">
+            <h5 class="pl-3">Most Loyal 10%</h5>
+            <div class="table-responsive">
+              <table id="senate-engaged-table" class="table table-striped">
+                <caption class="pl-3">Representatives Most Loyal to Their Party</caption>
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Name</th>
+                    <th>Votes against Party</th>
+                    <th>Votes with Party</th>
+                  </tr>
+                </thead>
+                <tbody class="most-table_tbody"></tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

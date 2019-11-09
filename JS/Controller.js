@@ -1,10 +1,15 @@
 import statistics from "./Model.js";
 import {
+  toggleLoader,
   renderStateSelect,
   renderMembersTable,
   renderChamberAtGlance,
   renderEngagementOrLoyaltyTable
 } from "./View.js";
+
+// SELECT BODY GLOBALLY TO ADD LOADER EVENTLISTENER
+
+const body = document.querySelector("body");
 
 // CONTROLLER - ROUTES ---------------------------------------------
 
@@ -15,6 +20,7 @@ const houseAttendancePage = document.location.pathname === "/house-attendance.ht
 const senateLoyaltyPage = document.location.pathname === "/senate-loyalty.html";
 const houseLoyaltyPage = document.location.pathname === "/house-loyalty.html";
 
+
 // CONTROLLER - ROUTER ---------------------------------------------
 
 async function controllerRouter() {
@@ -22,6 +28,8 @@ async function controllerRouter() {
     let data = await statistics().then(data => data);
 
     if (houseDataPage || senateDataPage) {
+      body.addEventListener("load", toggleLoader())
+
       const { membersPerChamber } = houseDataPage ? data.houseStats.Total : data.senateStats.Total;
       const checkboxes = document.querySelectorAll(".checkbox");
       const select = document.getElementById("table-state-select");
@@ -53,6 +61,8 @@ async function controllerRouter() {
       renderMembersTable(membersPerChamber, checkBoxArr, ...selectedState)
 
     } else if (houseAttendancePage) {
+      body.addEventListener("load", toggleLoader())
+
       const {
         leastEngaged,
         mostEngaged
@@ -63,6 +73,8 @@ async function controllerRouter() {
       renderEngagementOrLoyaltyTable(mostEngaged, "engagement", "most")
 
     } else if (senateAttendancePage) {
+      body.addEventListener("load", toggleLoader())
+
       const {
         leastEngaged,
         mostEngaged
@@ -73,6 +85,8 @@ async function controllerRouter() {
       renderEngagementOrLoyaltyTable(mostEngaged, "engagement", "most")
 
     } else if (senateLoyaltyPage) {
+      body.addEventListener("load", toggleLoader())
+
       const {
         leastLoyal,
         mostLoyal
@@ -83,6 +97,8 @@ async function controllerRouter() {
       renderEngagementOrLoyaltyTable(mostLoyal, "loyalty", "most")
 
     } else if (houseLoyaltyPage) {
+      body.addEventListener("load", toggleLoader())
+
       const {
         leastLoyal,
         mostLoyal

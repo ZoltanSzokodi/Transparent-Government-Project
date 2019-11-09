@@ -1,5 +1,14 @@
 // VIEW - RENDER FUNCTIONS ---------------------------------------------------
 
+// TOGGLE LOADER AND DATA CONTENT
+export function toggleLoader() {
+  let timeOut = setTimeout(showPage, 1000);
+}
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("data-tables").style.display = "block";
+}
+
 // DROPDOWN FOR STATES
 export function renderStateSelect() {
   const select = document.getElementById("table-state-select");
