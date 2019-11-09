@@ -68,7 +68,7 @@ table {
     transform: rotate(360deg);
   }
 } */
-
+/* Bootstrap loader */
 #loader {
   position: absolute;
   left: 45%;
@@ -85,7 +85,6 @@ table {
   animation-name: animatebottom;
   animation-duration: 1s;
 }
-
 @-webkit-keyframes animatebottom {
   from {
     bottom: -100px;
@@ -96,7 +95,6 @@ table {
     opacity: 1;
   }
 }
-
 @keyframes animatebottom {
   from {
     bottom: -100px;
@@ -107,7 +105,6 @@ table {
     opacity: 1;
   }
 }
-
 #myDiv {
   display: none;
   text-align: center;

@@ -3,9 +3,11 @@
 import APIkey from "../data/APIkey.js";
 
 // FETCH DATA FROM API -------------------------------------------------
+export const congressNo = 116;
+
 async function getData() {
-  let senateURL = "https://api.propublica.org/congress/v1/116/senate/members.json";
-  let houseURL = "https://api.propublica.org/congress/v1/116/house/members.json";
+  let senateURL = `https://api.propublica.org/congress/v1/${congressNo}/senate/members.json`;
+  let houseURL = `https://api.propublica.org/congress/v1/${congressNo}/house/members.json`;
   try {
     let response = await Promise.all([
       fetch(senateURL, { headers: { "X-API-Key": APIkey } }).then(data => data.json()),

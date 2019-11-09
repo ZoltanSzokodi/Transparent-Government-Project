@@ -1,4 +1,4 @@
-import statistics from "./Model.js";
+import statistics, { congressNo } from "./Model.js";
 import {
   toggleLoader,
   renderStateSelect,
@@ -7,9 +7,10 @@ import {
   renderEngagementOrLoyaltyTable
 } from "./View.js";
 
-// SELECT BODY GLOBALLY TO ADD LOADER EVENTLISTENER
+// SELECT GLOBAL
 
 const body = document.querySelector("body");
+document.querySelector(".congressNo").innerText = congressNo;
 
 // CONTROLLER - ROUTES ---------------------------------------------
 
