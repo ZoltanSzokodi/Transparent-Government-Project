@@ -8,12 +8,12 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="./dist/style.css">
+  <link rel="stylesheet" href="./CSS/style.css">
   <title>House Data</title>
 </head>
 
 <body>
-  <div class="container content-wrapper">
+  <div class="container col-xl-9 col-lg-12 col-md-12 col-sm-12 p-0">
 
     <div class="jumbotron-fluid jumbotron">
       <div class="container">
@@ -76,8 +76,8 @@
 
     <div class="card" style="border: none; border-radius: 0;">
       <div class="row no-gutters">
-        <div class="col-md-12">
-          <div class="card-body p-5">
+        <div class="container">
+          <div class="card-body col-md-12">
             <h5 class="card-title pb-3">Representatives</h5>
             <p class="card-text">The United States House of Representatives is the lower house of the United States
               Congress, the Senate being the upper house. Together they compose the national legislature of the United
@@ -123,17 +123,20 @@
       </div>
     </div>
 
-    <div class="chamber-members p-5">
+    <div class="members-tbl col-md-12">
       <div class="table-responsive">
         <h2>Party Affiliation</h2>
         <div class="table-filters">
+          <span style="font-weight: bold;">Party:</span>
           <input type="checkbox" name="Republicans" value="R" class="checkbox" checked> Republicans
           <input type="checkbox" name="Democrats" value="D" class="checkbox" checked> Democrats
           <input type="checkbox" name="Independent" value="I" class="checkbox" checked> Independent
+          <span style="font-weight: bold;"> | State:</span>
           <select id="table-state-select">
             <option value="All">All</option>
           </select>
         </div>
+        <br>
         <div class="table-length"></div>
         <table id="house-table" class="table table-striped">
           <caption>List of Representatives</caption>

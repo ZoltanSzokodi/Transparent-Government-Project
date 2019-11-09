@@ -62,7 +62,7 @@ export function renderMembersTable(stats, checkArr, state) {
       }
     }
   })
-  tableLength.textContent = tableCount;
+  tableLength.textContent = `Number of members: ${tableCount}`;
 }
 
 // RENDER CHAMBER AT GLANCE TABLE

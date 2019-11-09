@@ -4,8 +4,7 @@
   "description": "Transparent Government Project",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --watch",
-    "watch-sass": "sass --watch ./SCSS/main.scss ./dist/style.css"
+    "start": "webpack --watch"
   },
   "author": "Zoltan Szokodi",
   "license": "ISC",
