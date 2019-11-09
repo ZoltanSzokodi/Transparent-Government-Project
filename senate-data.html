@@ -13,17 +13,24 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container content-wrapper">
 
-    <div class="jumbotron jumbotron-fluid m-0">
+    <div class="jumbotron-fluid jumbotron">
       <div class="container">
-        <h1 class="display-4">Senate</h1>
-        <p class="lead">Transparent Government in Facts</p>
+        <div class="row">
+          <div class="col-sm welcome">
+            <h1 class="display-4">United States Senate</h1>
+            <p class="lead">Transparent Government in Facts</p>
+          </div>
+          <div class="col-sm text-right">
+            <img class="jumbotron-img" src="./img/senate-seal.png" alt="senate-logo">
+          </div>
+        </div>
       </div>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Menu</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -67,11 +74,11 @@
       </div>
     </nav>
 
-    <div class="card mt-3" style="max-width: 100%;">
+    <div class="card" style="border: none; border-radius: 0;">
       <div class="row no-gutters">
         <div class="col-md-12">
-          <div class="card-body">
-            <h5 class="card-title">Senate</h5>
+          <div class="card-body p-5">
+            <h5 class="card-title pb-3">Senate</h5>
             <p class="card-text">The United States Senate is the upper chamber of the United States Congress which,
               along with the United States House of Representatives—the lower chamber—comprises the legislature of the
               United States. The Senate chamber is located in the north wing of the Capitol Building, in Washington,
@@ -86,9 +93,9 @@
             <p class="card-text"><a class="btn btn-outline-dark" data-toggle="collapse" href="#multiCollapseExample1"
                 role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Read more</a></p>
             <div class="row">
-              <div class="col">
+              <div class="col-md-12">
                 <div class="collapse multi-collapse" id="multiCollapseExample1">
-                  <div class="about-dropdown card card-body">
+                  <div class="card card-body p-0 mt-2" style="border: none;">
                     As the upper chamber of Congress, the Senate has several powers of advice and consent which are
                     unique to it. These include the approval of treaties, and the confirmation of Cabinet secretaries,
                     Supreme Court justices, federal judges, flag officers, regulatory officials, ambassadors, other
@@ -112,7 +119,9 @@
           </div>
         </div>
       </div>
+    </div>
 
+    <div class="chamber-members p-5">
       <div class="table-responsive">
         <h2>Party Affiliation</h2>
         <div class="table-filters">
@@ -125,37 +134,34 @@
         </div>
         <div class="table-length"></div>
         <table id="house-table" class="table table-striped">
-          <table id="senate-table" class="table table-striped">
-            <caption>List of Senators</caption>
-            <thead class="thead-dark">
-              <tr>
-                <th>Full Name</th>
-                <th>Party Affiliation</th>
-                <th>State</th>
-                <th>Years in Office</th>
-                <th>Percentage of votes</th>
-              </tr>
-            </thead>
-            <tbody class="members-table_tbody"></tbody>
-          </table>
-      </div>
-
-      <div class="container text-center">
-        <h4>Footer</h4>
+          <caption>List of Senators</caption>
+          <thead class="thead-dark">
+            <tr>
+              <th>Full Name</th>
+              <th>Party Affiliation</th>
+              <th>State</th>
+              <th>Years in Office</th>
+              <th>Percentage of votes</th>
+            </tr>
+          </thead>
+          <tbody class="members-table_tbody"></tbody>
+        </table>
       </div>
     </div>
 
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"></script>
-    <script src="./JS/app.js" type="module"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="./JS/app.js" type="module"></script>
 </body>
 
 </html>

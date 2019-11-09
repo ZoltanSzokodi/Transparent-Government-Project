@@ -14,16 +14,24 @@
 
 <body>
 
-  <div class="container">
-    <div class="jumbotron jumbotron-fluid m-0">
+  <div class="container content-wrapper">
+
+    <div class="jumbotron-fluid jumbotron">
       <div class="container">
-        <h1 class="display-4">House Attendance</h1>
-        <p class="lead">Transparent Government in Facts</p>
+        <div class="row">
+          <div class="col-sm welcome">
+            <h1 class="display-4">House Attendance</h1>
+            <p class="lead">Transparent Government in Facts</p>
+          </div>
+          <div class="col-sm text-right">
+            <img class="jumbotron-img" src="./img/house-seal.png" alt="house-logo">
+          </div>
+        </div>
       </div>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Menu</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -67,90 +75,92 @@
       </div>
     </nav>
 
-    <div class="card mt-3" style="max-width: 100%;">
-      <h2>House at Glace</h2>
+    <div class="card" style="border: none; border-radius: 0;">
       <div class="row no-gutters">
-        <div class="table-responsive">
-          <table id="house-attendance-table" class="table table-striped">
-            <caption>Number of Representatives per Party</caption>
-            <thead class="thead-dark">
-              <tr>
-                <th>Party</th>
-                <th>Number of Reps</th>
-                <th>% Voted with Party</th>
-              </tr>
-            </thead>
-            <tbody class="attendance-table_tbody">
-            </tbody>
-          </table>
+        <div class="col-md-6 p-5">
+          <h5 class="card-title pb-3">Attendance</h5>
+          <p>
+            The Constitution specifies that a majority of members constitutes a quorum to do business in each house.
+            Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most
+            cases, debates continue even if a majority is not present.
+
+            The House uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye"
+            or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters,
+            as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic
+            device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if
+            present) cast the tiebreaking vote.
+          </p>
         </div>
 
-        <div class="card mt-3" style="max-width: 100%;">
-          <h2>Least Engaged (Bottom 10% Attendance)</h2>
-          <div class="row no-gutters">
-            <div class="table-responsive">
-              <table id="senate-engaged-table" class="table table-striped">
-                <caption>Number of Representatives per Party</caption>
-                <thead class="thead-dark">
-                  <tr>
-                    <th>Name</th>
-                    <th>Number of Missed Votes</th>
-                    <th>% Missed</th>
-                  </tr>
-                </thead>
-                <tbody class="least-table_tbody"></tbody>
-              </table>
-            </div>
+        <div class="col-md-6 p-5">
+          <h5>House at Glace</h5>
+          <div class="table-responsive">
+            <table id="house-attendance-table" class="table table-striped">
+              <caption>House at Glance</caption>
+              <thead class="thead-dark">
+                <tr>
+                  <th>Party</th>
+                  <th>Number of Reps</th>
+                  <th>% Voted with Party</th>
+                </tr>
+              </thead>
+              <tbody class="attendance-table_tbody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <div class="card mt-3" style="max-width: 100%;">
-              <h2>Most Engaged (Top 10% Attendance)</h2>
-              <div class="row no-gutters">
-                <div class="table-responsive">
-                  <table id="senate-engaged-table" class="table table-striped">
-                    <caption>Number of Representatives per Party</caption>
-                    <thead class="thead-dark">
-                      <tr>
-                        <th>Name</th>
-                        <th>Number of Missed Votes</th>
-                        <th>% Missed</th>
-                      </tr>
-                    </thead>
-                    <tbody class="most-table_tbody"></tbody>
-                  </table>
-                </div>
+    <div class="card" style="border: none; border-radius: 0;">
+      <div class="row no-gutters">
+        <div class="col-md-6 pr-3">
+          <h5 class="pl-5">Least Engaged 10%</h5>
+          <div class="table-responsive">
+            <table id="senate-engaged-table" class="table table-striped">
+              <caption class="pl-3">Least Engaged Representatives</caption>
+              <thead class="thead-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Number of Missed Votes</th>
+                  <th>% Missed</th>
+                </tr>
+              </thead>
+              <tbody class="least-table_tbody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-6 p-0">
+          <h5 class="pl-5">Most Engeged 10%</h5>
+          <div class="table-responsive">
+            <table id="senate-engaged-table" class="table table-striped">
+              <caption class="pl-3">Most Engaged Representatives</caption>
+              <thead class="thead-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Number of Missed Votes</th>
+                  <th>% Missed</th>
+                </tr>
+              </thead>
+              <tbody class="most-table_tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Attendance</h5>
-                    <p class="card-text">The Constitution specifies that a majority of members constitutes a quorum to
-                      do
-                      business in each house. Representatives and senators rarely force the presence of a quorum by
-                      demanding
-                      quorum calls; thus, in most cases, debates continue even if a majority is not present.
-                      <br><br>
-                      The House uses roll-call votes; a clerk calls out the names of all the senators, each senator
-                      stating
-                      "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most
-                      formal
-                      matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote
-                      by
-                      electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice
-                      President
-                      may (if present) cast the tiebreaking vote.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-              integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-              crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-              integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-              crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-              integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-              crossorigin="anonymous"></script>
-            <script src="./JS/app.js" type="module"></script>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="./JS/app.js" type="module"></script>
 </body>
 
 </html>

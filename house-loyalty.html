@@ -9,21 +9,29 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="./dist/style.css">
-  <title>Party Loyalty | House</title>
+  <title>House Loyalty</title>
 </head>
 
 <body>
 
-  <div class="container">
-    <div class="jumbotron jumbotron-fluid m-0">
+  <div class="container content-wrapper">
+
+    <div class="jumbotron-fluid jumbotron">
       <div class="container">
-        <h1 class="display-4">House - Party Loyalty</h1>
-        <p class="lead">Transparent Government in Facts</p>
+        <div class="row">
+          <div class="col-sm welcome">
+            <h1 class="display-4">House Loyalty</h1>
+            <p class="lead">Transparent Government in Facts</p>
+          </div>
+          <div class="col-sm text-right">
+            <img class="jumbotron-img" src="./img/house-seal.png" alt="house-logo">
+          </div>
+        </div>
       </div>
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">Menu</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -59,7 +67,7 @@
               Party Loyalty
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">House</a>
+              <a class="dropdown-item" href="./house-loyalty.html">House</a>
               <a class="dropdown-item" href="./senate-loyalty.html">Senate</a>
             </div>
           </li>
@@ -67,79 +75,91 @@
       </div>
     </nav>
 
-    <div class="card mt-3" style="max-width: 100%;">
-      <h2>Senate at Glace</h2>
+    <div class="card" style="border: none; border-radius: 0;">
       <div class="row no-gutters">
-        <div class="table-responsive">
-          <table id="house-attendance-table" class="table table-striped">
-            <caption>Number of Senators per Party</caption>
-            <thead class="thead-dark">
-              <tr>
-                <th>Party</th>
-                <th>Number of Reps</th>
-                <th>% Voted with Party</th>
-              </tr>
-            </thead>
-            <tbody class="attendance-table_tbody"></tbody>
-          </table>
+        <div class="col-md-6 p-5">
+          <h5 class="card-title pb-3">Party Loyalty</h5>
+          <p>
+            Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively,
+            tend to be the most faithful in voting for their party's nominee for office and legislation that backs their
+            party's agenda.
+            <br><br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem blanditiis ipsam dignissimos! Nemo
+            quia labore corporis deserunt vel adipisci, aspernatur ut est veniam eos corrupti sunt perspiciatis, fugit
+            nulla voluptatem doloremque voluptate blanditiis quaerat magnam enim commodi, debitis minima itaque. Atque
+            nobis error ullam, quidem sequi perferendis eligendi eaque neque!
+          </p>
         </div>
 
-        <div class="card mt-3" style="max-width: 100%;">
-          <h2>Least Loyal to Party - 10%</h2>
-          <div class="row no-gutters">
-            <div class="table-responsive">
-              <table id="senate-loyal-table" class="table table-striped">
-                <caption>Number of Senators per Party</caption>
-                <thead class="thead-dark">
-                  <tr>
-                    <th>Name</th>
-                    <th>% of Votes against Party</th>
-                    <th>% of Votes with Party</th>
-                  </tr>
-                </thead>
-                <tbody class="least-table_tbody"></tbody>
-              </table>
-            </div>
+        <div class="col-md-6 p-5">
+          <h5>House at Glace</h5>
+          <div class="table-responsive">
+            <table id="house-attendance-table" class="table table-striped">
+              <caption>House at Glance</caption>
+              <thead class="thead-dark">
+                <tr>
+                  <th>Party</th>
+                  <th>Number of Reps</th>
+                  <th>% Voted with Party</th>
+                </tr>
+              </thead>
+              <tbody class="attendance-table_tbody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <div class="card mt-3" style="max-width: 100%;">
-              <h2>Most Loyal to Party - 10%</h2>
-              <div class="row no-gutters">
-                <div class="table-responsive">
-                  <table id="senate-loyal-table" class="table table-striped">
-                    <caption>Number of Senators per Party</caption>
-                    <thead class="thead-dark">
-                      <tr>
-                        <th>Name</th>
-                        <th>% of Votes against Party</th>
-                        <th>% of Votes with Party</th>
-                      </tr>
-                    </thead>
-                    <tbody class="most-table_tbody"></tbody>
-                  </table>
-                </div>
+    <div class="card" style="border: none; border-radius: 0;">
+      <div class="row no-gutters">
+        <div class="col-md-6 pr-3">
+          <h5 class="pl-3">Least Loyal 10%</h5>
+          <div class="table-responsive">
+            <table id="senate-engaged-table" class="table table-striped">
+              <caption class="pl-3">Representatives Least Loyal to Their Party</caption>
+              <thead class="thead-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Votes against Party</th>
+                  <th>Votes with Party</th>
+                </tr>
+              </thead>
+              <tbody class="least-table_tbody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-6 p-0">
+          <h5 class="pl-3">Most Loyal 10%</h5>
+          <div class="table-responsive">
+            <table id="senate-engaged-table" class="table table-striped">
+              <caption class="pl-3">Representatives Most Loyal to Their Party</caption>
+              <thead class="thead-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Votes against Party</th>
+                  <th>Votes with Party</th>
+                </tr>
+              </thead>
+              <tbody class="most-table_tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Party Loyalty</h5>
-                    <p class="card-text">Those who consider themselves to be strong partisans, strong Democrats and
-                      strong
-                      Republicans respectively, tend to be the most faithful in voting for their party's nominee for
-                      office and
-                      legislation that backs their party's agenda.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-              integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-              crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-              integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-              crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-              integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-              crossorigin="anonymous"></script>
-            <script src="./JS/app.js" type="module"></script>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="./JS/app.js" type="module"></script>
 </body>
 
 </html>

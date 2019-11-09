@@ -8,6 +8,10 @@ body {
   background-image: linear-gradient(to right, #a1a1a1, #b5b5b5, #c9c9c9, #dedede, #f3f3f3);
 }
 
+.content-wrapper {
+  max-width: 80%;
+}
+
 .jumbotron {
   background-image: linear-gradient(to left, #a1a1a1, #b5b5b5, #c9c9c9, #dedede, #f3f3f3);
   margin: 0;
