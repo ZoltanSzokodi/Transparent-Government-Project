@@ -14,75 +14,75 @@
 </head>
 
 <body>
+  <!-- <div id="loader"></div> -->
+  <div id="spinner-container">
+    <div class="spinner-grow" role="status" id="spinner"></div>
+    <span>Fetching data...</span>
+  </div>
 
-  <div class="container col-xl-9 col-lg-12 col-md-12 col-sm-12 p-0">
+  <div style="display:none;" id="data-tables" class="animate-bottom">
+    <div class="container col-xl-9 col-lg-12 col-md-12 col-sm-12 p-0">
 
-    <div class="jumbotron-fluid jumbotron">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm welcome">
-            <h1 class="display-4">Senate Attendance</h1>
-            <p class="lead">Transparent Government in Facts</p>
-          </div>
-          <div class="col-sm text-right">
-            <img class="jumbotron-img" src="./img/senate-seal.png" alt="senate-logo">
+      <div class="jumbotron-fluid jumbotron">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm welcome">
+              <h1 class="display-4">Senate Attendance</h1>
+              <p class="lead">Transparent Government in Facts</p>
+            </div>
+            <div class="col-sm text-right">
+              <img class="jumbotron-img" src="./img/senate-seal.png" alt="senate-logo">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Menu</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="./home.html">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Congress <span class="congressNo"></span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="./house-data.html">House</a>
-              <a class="dropdown-item" href="./senate-data.html">Senate</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Attendance
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="./house-attendance.html">House</a>
-              <a class="dropdown-item" href="./senate-attendance.html">Senate</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Party Loyalty
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="./house-loyalty.html">House</a>
-              <a class="dropdown-item" href="./senate-loyalty.html">Senate</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Statistics</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./home.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Congress <span class="congressNo"></span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="./house-data.html">House</a>
+                <a class="dropdown-item" href="./senate-data.html">Senate</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Attendance
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="./house-attendance.html">House</a>
+                <a class="dropdown-item" href="./senate-attendance.html">Senate</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Party Loyalty
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="./house-loyalty.html">House</a>
+                <a class="dropdown-item" href="./senate-loyalty.html">Senate</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-    <!-- <div id="loader"></div> -->
-    <div class="spinner-grow" role="status" id="loader">
-      <span class="sr-only">Loading...</span>
-    </div>
-
-    <div style="display:none;" id="data-tables" class="animate-bottom">
-      <div class="card" style="border: none; border-radius: 0;">
+      <div class="card about" style="border: none; border-radius: 0;">
         <div class="row">
           <div class="col-xl-6 p-5">
             <h5 class="card-title pb-3">Attendance</h5>
@@ -94,7 +94,8 @@
 
               The House uses roll-call votes; a clerk calls out the names of all the senators, each senator stating
               "aye"
-              or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters,
+              or "no" when his or her name is announced. The House reserves roll-call votes for the most formal
+              matters,
               as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic
               device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if
               present) cast the tiebreaking vote.

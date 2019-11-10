@@ -4,10 +4,11 @@
 }
 body {
   font-family: "Archivo", sans-serif;
-  background-image: linear-gradient(to right, #a1a1a1, #b5b5b5, #c9c9c9, #dedede, #f3f3f3);
+  /* background-image: linear-gradient(to right, #a1a1a1, #b5b5b5, #c9c9c9, #dedede, #f3f3f3, #ffffff); */
+  background-color: #ffffff;
 }
 .jumbotron {
-  background-image: linear-gradient(to left, #a1a1a1, #b5b5b5, #c9c9c9, #dedede, #f3f3f3);
+  background-image: linear-gradient(to right, #b5b5b5, #c9c9c9, #dedede, #f3f3f3, #ffffff);
   margin: 0;
   padding: 50px;
 }
@@ -26,6 +27,9 @@ body {
   font-weight: 700;
   color: white;
   text-shadow: 1px 1px 4px black;
+}
+.about {
+  background-color: #f3f3f3;
 }
 .members-tbl {
   background-color: #f3f3f3;
@@ -69,10 +73,22 @@ table {
   }
 } */
 /* Bootstrap loader */
-#loader {
+#spinner-container {
+  position: relative;
+  height: 100vh;
+}
+#spinner-container span {
+  position: absolute;
+  left: 43%;
+  top: 57%;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+#spinner {
   position: absolute;
   left: 45%;
-  top: 125%;
+  top: 42%;
   width: 100px;
   height: 100px;
 }

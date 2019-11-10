@@ -5,7 +5,7 @@ export function toggleLoader() {
   let timeOut = setTimeout(showPage, 1000);
 }
 function showPage() {
-  document.getElementById("loader").style.display = "none";
+  document.getElementById("spinner-container").style.display = "none";
   document.getElementById("data-tables").style.display = "block";
 }
 
